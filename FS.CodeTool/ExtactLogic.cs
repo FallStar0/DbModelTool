@@ -94,6 +94,7 @@ namespace FS.CodeTool
             try
             {
                 var tables = extractor.GetAllTables();
+                tables = tables.OrderBy(x => x.TableName).ToList();
                 result.Result = tables;
                 TableInfos = tables;
             }
