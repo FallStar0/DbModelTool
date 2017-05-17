@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Language Code="zh-CN" Name="简体中文">
+  <String LocID="10670">加快村民收集木材的速度。</String>
+  <String LocID="11070">拉锯</String>
+  <String LocID="11725" Key="cStringHelpStringUnitPopCost">人口: %d</String>
+</Language>

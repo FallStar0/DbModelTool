@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FS.CodeTool.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ModelNameSpace" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Model</Value>
+    </Setting>
+    <Setting Name="ModelGeneratePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Models\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
