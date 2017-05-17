@@ -88,7 +88,7 @@ namespace FS.CodeTool
                     }
                     sb.AppendLine("    }");
                     sb.AppendLine("}");
-                    File.AppendAllText(Path.Combine(model.FilePath, table.TableName + ".cs"), sb.ToString(), Encoding.UTF8);
+                    File.WriteAllText(Path.Combine(model.FilePath, table.TableName + ".cs"), sb.ToString(), Encoding.UTF8);
                     logAction(string.Format("[{0}/{1}]生成文件：{2}", index, allcount, table.TableName + ".cs"));
                 }
                 logAction("已经生成所有文件~");

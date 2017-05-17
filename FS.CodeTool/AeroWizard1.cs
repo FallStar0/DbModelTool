@@ -26,9 +26,12 @@ namespace FS.CodeTool
             cblbTables.ItemCheck += CblbTables_ItemCheck;
             cbAllTables.CheckedChanged += CbAllTables_CheckedChanged;
 
+            this.wpSettings.Commit += WpSettings_Commit;
+
             this.wpResult.Initialize += WpResult_Initialize;
             this.btnGenFiles.Click += (s, e) => BeginToGenFiles();
         }
+
 
         private void AeroWizard1_Load(object sender, EventArgs e)
         {
@@ -122,7 +125,18 @@ namespace FS.CodeTool
         #endregion
 
         #region Page-Config
-
+        private void WpSettings_Commit(object sender, AeroWizard.WizardPageConfirmEventArgs e)
+        {
+            var nameSpace = txtNameSpace.Text.Trim();
+            var fileDir = txtGenPath.Text.Trim();
+            if (string.IsNullOrEmpty(nameSpace))
+                nameSpace = "Model";
+            if (string.IsNullOrEmpty(fileDir))
+                fileDir = "Models\\";
+            Properties.Settings.Default.ModelNameSpace = nameSpace;
+            Properties.Settings.Default.ModelGeneratePath = fileDir;
+            Properties.Settings.Default.Save();
+        }
         #endregion
 
         #region Page-Result

@@ -85,10 +85,10 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(495, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(622, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(226, 55);
+            this.label1.Size = new System.Drawing.Size(101, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "数据库连接需要在对应的 .config 里面定义好";
             // 
@@ -105,7 +105,7 @@
             this.lbConStringName.Location = new System.Drawing.Point(0, 0);
             this.lbConStringName.Margin = new System.Windows.Forms.Padding(0);
             this.lbConStringName.Name = "lbConStringName";
-            this.lbConStringName.Size = new System.Drawing.Size(305, 406);
+            this.lbConStringName.Size = new System.Drawing.Size(302, 406);
             this.lbConStringName.TabIndex = 1;
             // 
             // wpTables
@@ -124,8 +124,8 @@
             this.cbAllTables.AutoSize = true;
             this.cbAllTables.Checked = true;
             this.cbAllTables.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbAllTables.Location = new System.Drawing.Point(674, 8);
-            this.cbAllTables.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbAllTables.Location = new System.Drawing.Point(682, 3);
+            this.cbAllTables.Margin = new System.Windows.Forms.Padding(1);
             this.cbAllTables.Name = "cbAllTables";
             this.cbAllTables.Size = new System.Drawing.Size(51, 21);
             this.cbAllTables.TabIndex = 1;
@@ -143,7 +143,7 @@
             this.cblbTables.Location = new System.Drawing.Point(0, 0);
             this.cblbTables.Margin = new System.Windows.Forms.Padding(0);
             this.cblbTables.Name = "cblbTables";
-            this.cblbTables.Size = new System.Drawing.Size(657, 400);
+            this.cblbTables.Size = new System.Drawing.Size(662, 400);
             this.cblbTables.TabIndex = 0;
             // 
             // wpSettings
@@ -161,18 +161,18 @@
             // txtGenPath
             // 
             this.txtGenPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FS.CodeTool.Properties.Settings.Default, "ModelGeneratePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtGenPath.Location = new System.Drawing.Point(71, 34);
-            this.txtGenPath.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGenPath.Location = new System.Drawing.Point(101, 49);
+            this.txtGenPath.Margin = new System.Windows.Forms.Padding(1);
             this.txtGenPath.Name = "txtGenPath";
-            this.txtGenPath.Size = new System.Drawing.Size(213, 23);
+            this.txtGenPath.Size = new System.Drawing.Size(131, 23);
             this.txtGenPath.TabIndex = 1;
             this.txtGenPath.Text = global::FS.CodeTool.Properties.Settings.Default.ModelGeneratePath;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 36);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(7, 52);
+            this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 0;
@@ -181,8 +181,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(7, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 0;
@@ -191,10 +191,10 @@
             // txtNameSpace
             // 
             this.txtNameSpace.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FS.CodeTool.Properties.Settings.Default, "ModelNameSpace", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtNameSpace.Location = new System.Drawing.Point(71, 10);
-            this.txtNameSpace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNameSpace.Location = new System.Drawing.Point(101, 8);
+            this.txtNameSpace.Margin = new System.Windows.Forms.Padding(1);
             this.txtNameSpace.Name = "txtNameSpace";
-            this.txtNameSpace.Size = new System.Drawing.Size(141, 23);
+            this.txtNameSpace.Size = new System.Drawing.Size(131, 23);
             this.txtNameSpace.TabIndex = 1;
             this.txtNameSpace.Text = global::FS.CodeTool.Properties.Settings.Default.ModelNameSpace;
             // 
@@ -216,10 +216,10 @@
             // 
             this.btnGenFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenFiles.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-            this.btnGenFiles.Location = new System.Drawing.Point(659, 8);
-            this.btnGenFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGenFiles.Location = new System.Drawing.Point(656, 3);
+            this.btnGenFiles.Margin = new System.Windows.Forms.Padding(1);
             this.btnGenFiles.Name = "btnGenFiles";
-            this.btnGenFiles.Size = new System.Drawing.Size(68, 37);
+            this.btnGenFiles.Size = new System.Drawing.Size(77, 41);
             this.btnGenFiles.TabIndex = 1;
             this.btnGenFiles.Text = "生成";
             this.btnGenFiles.UseVisualStyleBackColor = true;
@@ -234,7 +234,7 @@
             this.txtResultLog.Multiline = true;
             this.txtResultLog.Name = "txtResultLog";
             this.txtResultLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResultLog.Size = new System.Drawing.Size(651, 404);
+            this.txtResultLog.Size = new System.Drawing.Size(631, 408);
             this.txtResultLog.TabIndex = 0;
             // 
             // AeroWizard1
