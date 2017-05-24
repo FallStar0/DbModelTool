@@ -94,7 +94,7 @@
             this.panel1.Controls.Add(this.lbConStringName);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(737, 406);
             this.panel1.TabIndex = 3;
@@ -104,10 +104,10 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.label1.ForeColor = System.Drawing.Color.DimGray;
-            this.label1.Location = new System.Drawing.Point(553, 15);
+            this.label1.Location = new System.Drawing.Point(615, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(172, 98);
+            this.label1.Size = new System.Drawing.Size(115, 59);
             this.label1.TabIndex = 2;
             this.label1.Text = "数据库连接需要在对应的 .config 里面定义好";
             // 
@@ -124,7 +124,7 @@
             this.lbConStringName.Location = new System.Drawing.Point(0, 0);
             this.lbConStringName.Margin = new System.Windows.Forms.Padding(0);
             this.lbConStringName.Name = "lbConStringName";
-            this.lbConStringName.Size = new System.Drawing.Size(299, 406);
+            this.lbConStringName.Size = new System.Drawing.Size(201, 406);
             this.lbConStringName.TabIndex = 1;
             // 
             // wpTables
@@ -132,7 +132,7 @@
             this.wpTables.Controls.Add(this.panel2);
             this.wpTables.Name = "wpTables";
             this.wpTables.NextPage = this.wpSettings;
-            this.wpTables.Size = new System.Drawing.Size(737, 406);
+            this.wpTables.Size = new System.Drawing.Size(491, 244);
             this.wpTables.TabIndex = 1;
             this.wpTables.Text = "请选择要生成代码的表";
             // 
@@ -142,9 +142,9 @@
             this.panel2.Controls.Add(this.cblbTables);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(737, 406);
+            this.panel2.Size = new System.Drawing.Size(491, 244);
             this.panel2.TabIndex = 2;
             // 
             // cbAllTables
@@ -153,7 +153,7 @@
             this.cbAllTables.AutoSize = true;
             this.cbAllTables.Checked = true;
             this.cbAllTables.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbAllTables.Location = new System.Drawing.Point(679, 8);
+            this.cbAllTables.Location = new System.Drawing.Point(436, 5);
             this.cbAllTables.Margin = new System.Windows.Forms.Padding(1);
             this.cbAllTables.Name = "cbAllTables";
             this.cbAllTables.Size = new System.Drawing.Size(51, 21);
@@ -170,7 +170,7 @@
             this.cblbTables.Location = new System.Drawing.Point(0, 0);
             this.cblbTables.Margin = new System.Windows.Forms.Padding(0);
             this.cblbTables.Name = "cblbTables";
-            this.cblbTables.Size = new System.Drawing.Size(737, 406);
+            this.cblbTables.Size = new System.Drawing.Size(491, 244);
             this.cblbTables.TabIndex = 0;
             // 
             // wpSettings
@@ -178,7 +178,7 @@
             this.wpSettings.Controls.Add(this.panel3);
             this.wpSettings.Name = "wpSettings";
             this.wpSettings.NextPage = this.wpResult;
-            this.wpSettings.Size = new System.Drawing.Size(737, 406);
+            this.wpSettings.Size = new System.Drawing.Size(491, 244);
             this.wpSettings.TabIndex = 2;
             this.wpSettings.Text = "选项";
             // 
@@ -191,35 +191,35 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Font = new System.Drawing.Font("微软雅黑", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(737, 406);
+            this.panel3.Size = new System.Drawing.Size(491, 244);
             this.panel3.TabIndex = 2;
             // 
             // txtGenPath
             // 
             this.txtGenPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FS.CodeTool.Properties.Settings.Default, "ModelGeneratePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtGenPath.Location = new System.Drawing.Point(93, 50);
+            this.txtGenPath.Location = new System.Drawing.Point(62, 30);
             this.txtGenPath.Margin = new System.Windows.Forms.Padding(1);
             this.txtGenPath.Name = "txtGenPath";
-            this.txtGenPath.Size = new System.Drawing.Size(208, 26);
+            this.txtGenPath.Size = new System.Drawing.Size(140, 26);
             this.txtGenPath.TabIndex = 1;
             this.txtGenPath.Text = global::FS.CodeTool.Properties.Settings.Default.ModelGeneratePath;
             // 
             // txtNameSpace
             // 
             this.txtNameSpace.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FS.CodeTool.Properties.Settings.Default, "ModelNameSpace", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtNameSpace.Location = new System.Drawing.Point(93, 8);
+            this.txtNameSpace.Location = new System.Drawing.Point(62, 5);
             this.txtNameSpace.Margin = new System.Windows.Forms.Padding(1);
             this.txtNameSpace.Name = "txtNameSpace";
-            this.txtNameSpace.Size = new System.Drawing.Size(206, 26);
+            this.txtNameSpace.Size = new System.Drawing.Size(139, 26);
             this.txtNameSpace.TabIndex = 1;
             this.txtNameSpace.Text = global::FS.CodeTool.Properties.Settings.Default.ModelNameSpace;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 53);
+            this.label3.Location = new System.Drawing.Point(5, 32);
             this.label3.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 20);
@@ -229,7 +229,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 11);
+            this.label2.Location = new System.Drawing.Point(5, 7);
             this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 20);
@@ -245,7 +245,7 @@
             this.wpResult.Name = "wpResult";
             this.wpResult.ShowCancel = false;
             this.wpResult.ShowNext = false;
-            this.wpResult.Size = new System.Drawing.Size(737, 406);
+            this.wpResult.Size = new System.Drawing.Size(491, 244);
             this.wpResult.TabIndex = 3;
             this.wpResult.Text = "结果";
             // 
@@ -255,19 +255,19 @@
             this.panel4.Controls.Add(this.txtResultLog);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(737, 406);
+            this.panel4.Size = new System.Drawing.Size(491, 244);
             this.panel4.TabIndex = 2;
             // 
             // btnGenFiles
             // 
             this.btnGenFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenFiles.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-            this.btnGenFiles.Location = new System.Drawing.Point(663, 1);
+            this.btnGenFiles.Location = new System.Drawing.Point(442, 1);
             this.btnGenFiles.Margin = new System.Windows.Forms.Padding(1);
             this.btnGenFiles.Name = "btnGenFiles";
-            this.btnGenFiles.Size = new System.Drawing.Size(73, 41);
+            this.btnGenFiles.Size = new System.Drawing.Size(49, 25);
             this.btnGenFiles.TabIndex = 1;
             this.btnGenFiles.Text = "生成";
             this.btnGenFiles.UseVisualStyleBackColor = true;
@@ -282,7 +282,7 @@
             this.txtResultLog.Multiline = true;
             this.txtResultLog.Name = "txtResultLog";
             this.txtResultLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResultLog.Size = new System.Drawing.Size(646, 407);
+            this.txtResultLog.Size = new System.Drawing.Size(432, 246);
             this.txtResultLog.TabIndex = 0;
             // 
             // AeroWizard1

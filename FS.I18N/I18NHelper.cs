@@ -40,8 +40,9 @@ namespace FS.I18N
         }
         #endregion
 
+        #region 获取
         /// <summary>
-        /// 
+        /// 通过ID获取字符串
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -49,5 +50,16 @@ namespace FS.I18N
         {
             return id.ToString();
         }
+        /// <summary>
+        /// 通过Key获取
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static string GetByKey(string key)
+        {
+            return key;
+        }
+        #endregion
+
     }
 }

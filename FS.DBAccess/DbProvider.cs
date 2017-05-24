@@ -23,7 +23,7 @@ namespace FS.DBAccess
         /// <summary>
         /// 数据库连接对象
         /// </summary>
-        protected IDbConnection DbConn { get; set; }
+        protected DbConnection DbConn { get; set; }
         /// <summary>
         /// 连接字符串
         /// </summary>
@@ -97,7 +97,7 @@ namespace FS.DBAccess
         /// </summary>
         /// <param name="conString">如果不传入，则根据初始化时候传入的信息来实现</param>
         /// <returns></returns>
-        protected virtual IDbConnection CreateConnection(string conString = null)
+        protected virtual DbConnection CreateConnection(string conString = null)
         {
             var con = ProviderFactory.CreateConnection();
             con.ConnectionString = conString;
@@ -142,7 +142,9 @@ namespace FS.DBAccess
         /// <returns></returns>
         public virtual DbCommand CreateCommand()
         {
-            return ProviderFactory.CreateCommand();
+            var cmd = ProviderFactory.CreateCommand();
+            cmd.Connection = DbConn as DbConnection;
+            return cmd;
         }
         /// <summary>
         /// 获取输入的格式化参数
@@ -212,6 +214,35 @@ namespace FS.DBAccess
             }
         }
         /// <summary>
+        /// 执行脚本，并返回模型列表【动态对象】
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <param name="dbTran"></param>
+        /// <param name="cmdType"></param>
+        /// <returns></returns>
+        public virtual IEnumerable<dynamic> Query(string sql, IEnumerable<IDbDataParameter> parameters = null, IDbTransaction dbTran = null, CommandType? cmdType = null)
+        {
+            var d = CreateParameter(parameters);
+            return DbConn.Query(sql, d, dbTran, true, null, cmdType);
+        }
+
+        /// <summary>
+        /// 执行脚本，并返回模型列表
+        /// </summary>
+        /// <param name="type">要查询的类型</param>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <param name="dbTran"></param>
+        /// <param name="cmdType"></param>
+        /// <returns></returns>
+        public virtual IEnumerable<object> Query(Type type, string sql, IEnumerable<IDbDataParameter> parameters = null, IDbTransaction dbTran = null, CommandType? cmdType = null)
+        {
+            var d = CreateParameter(parameters);
+            return DbConn.Query(type, sql, d, dbTran, true, null, cmdType);
+        }
+
+        /// <summary>
         /// 执行脚本，并返回模型列表
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -235,7 +266,7 @@ namespace FS.DBAccess
         /// </summary>
         /// <param name="dt"></param>
         /// <param name="selectCmd">查询这部分数据的Sql语句，需要CommandText ，如果有参数化就需要填充 Parameters</param>
-        public virtual bool BatchUpdate(DataTable dt, DbCommand selectCmd)
+        public virtual bool BatchUpdate(DataTable dt, DbCommand selectCmd, ushort batchSize = 500)
         {
             if (dt == null)
                 throw new ArgumentNullException("dt");
@@ -245,7 +276,12 @@ namespace FS.DBAccess
             {
                 var da = CreateAdapter();
                 da.SelectCommand = selectCmd;
-                da.UpdateBatchSize = 1000;
+                if (selectCmd.Connection == null)
+                    selectCmd.Connection = DbConn;
+
+                da.UpdateBatchSize = batchSize;
+
+                DbConn.Open();
 
                 var builder = CreateCommandBulider(da);
                 da.Update(dt);
@@ -413,7 +449,7 @@ namespace FS.DBAccess
             if (cmdType != null)
                 cmd.CommandType = cmdType.Value;
             if (dbTran != null)
-                cmd.Transaction = dbTran;
+                cmd.Transaction = dbTran as DbTransaction;
             if (dbParams != null && dbParams.Count() > 0)
             {
                 cmd.Parameters.Clear();
@@ -454,6 +490,52 @@ namespace FS.DBAccess
             }
 
             return array;
+        }
+
+        private static Dictionary<Type, DbType> typeMap = null;
+        protected static DbType ConvertTypeToDbType(Type tp)
+        {
+            if (typeMap == null)
+            {
+                typeMap = new Dictionary<Type, DbType>();
+                typeMap[typeof(byte)] = DbType.Byte;
+                typeMap[typeof(sbyte)] = DbType.SByte;
+                typeMap[typeof(short)] = DbType.Int16;
+                typeMap[typeof(ushort)] = DbType.UInt16;
+                typeMap[typeof(int)] = DbType.Int32;
+                typeMap[typeof(uint)] = DbType.UInt32;
+                typeMap[typeof(long)] = DbType.Int64;
+                typeMap[typeof(ulong)] = DbType.UInt64;
+                typeMap[typeof(float)] = DbType.Single;
+                typeMap[typeof(double)] = DbType.Double;
+                typeMap[typeof(decimal)] = DbType.Decimal;
+                typeMap[typeof(bool)] = DbType.Boolean;
+                typeMap[typeof(string)] = DbType.String;
+                typeMap[typeof(char)] = DbType.StringFixedLength;
+                typeMap[typeof(Guid)] = DbType.Guid;
+                typeMap[typeof(DateTime)] = DbType.DateTime;
+                typeMap[typeof(DateTimeOffset)] = DbType.DateTimeOffset;
+                typeMap[typeof(byte[])] = DbType.Binary;
+                typeMap[typeof(byte?)] = DbType.Byte;
+                typeMap[typeof(sbyte?)] = DbType.SByte;
+                typeMap[typeof(short?)] = DbType.Int16;
+                typeMap[typeof(ushort?)] = DbType.UInt16;
+                typeMap[typeof(int?)] = DbType.Int32;
+                typeMap[typeof(uint?)] = DbType.UInt32;
+                typeMap[typeof(long?)] = DbType.Int64;
+                typeMap[typeof(ulong?)] = DbType.UInt64;
+                typeMap[typeof(float?)] = DbType.Single;
+                typeMap[typeof(double?)] = DbType.Double;
+                typeMap[typeof(decimal?)] = DbType.Decimal;
+                typeMap[typeof(bool?)] = DbType.Boolean;
+                typeMap[typeof(char?)] = DbType.StringFixedLength;
+                typeMap[typeof(Guid?)] = DbType.Guid;
+                typeMap[typeof(DateTime?)] = DbType.DateTime;
+                typeMap[typeof(DateTimeOffset?)] = DbType.DateTimeOffset;
+                //typeMap[typeof(System.Data.Linq.Binary)] = DbType.Binary;
+            }
+            if (typeMap.ContainsKey(tp)) return typeMap[tp];
+            return DbType.String;
         }
 
         /// <summary>
