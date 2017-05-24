@@ -11,3 +11,5 @@ A tool use to read table structures and description from multi-database, and gen
 支持多语言，字符串已经全部抽离到xml(形如 zh-CN.xml en-us.xml)文件，可以直接翻译文件来实现语言切换。
 
 Multi-language support, all strings are store in an xml file name like zh-CN.xml en-us.xml, you can just translate it to support other language.
+
+联系(contract)：fallstar0@qq.com
