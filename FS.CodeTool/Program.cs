@@ -15,7 +15,8 @@ namespace FS.CodeTool
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.Run(new AeroWizard1());
+            FS.I18N.LangHelper.LoadLanguage();
+            Application.Run(new FormMain());
         }
     }
 }

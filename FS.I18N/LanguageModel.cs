@@ -34,7 +34,7 @@ namespace FS.I18N
         /// <summary>
         /// 字符串集合
         /// </summary>
-        [XmlArray("String")]
+        [XmlElement("String")]
         public List<LanguageStingModel> Strings { get; set; }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace FS.I18N
         /// <summary>
         /// 唯一ID
         /// </summary>
-        [XmlAttribute]
+        [XmlAttribute("LocID")]
         public uint LocID { get; set; }
         /// <summary>
         /// 用于字符串索引的Key，不是必须的
@@ -123,4 +123,5 @@ namespace FS.I18N
         [XmlText]
         public string Value { get; set; }
     }
+
 }

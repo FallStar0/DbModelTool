@@ -121,7 +121,7 @@ namespace FS.DbExtractor
             if (info == null)
                 throw new ArgumentNullException(nameof(info));
             if (string.IsNullOrEmpty(info.FieldType))
-                throw new ArgumentException(nameof(info.FieldType) + "不可为空！");
+                throw new ArgumentNullException(nameof(info.FieldType));
             info.DataType = SqlType2CsharpTypeStr(info.FieldType, info.IsNullable);
             return info.DataType;
         }

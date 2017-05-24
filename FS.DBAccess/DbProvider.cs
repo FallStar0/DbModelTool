@@ -11,6 +11,7 @@ using System.Text;
 using System.Data;
 using Dapper;
 using System.Data.Common;
+using FS.I18N;
 
 namespace FS.DBAccess
 {
@@ -84,7 +85,7 @@ namespace FS.DBAccess
             //创建连接字符串
             ConString = CreateConnectionString(address, port, dbName, userName, password);
             if (string.IsNullOrEmpty(ConString))
-                throw new Exception("创建数据连接字符串失败");
+                throw new Exception(LangHelper.GetByID(153));
             //创建连接对象
             DbConn = CreateConnection(ConString);
         }
@@ -269,9 +270,9 @@ namespace FS.DBAccess
         public virtual bool BatchUpdate(DataTable dt, DbCommand selectCmd, ushort batchSize = 500)
         {
             if (dt == null)
-                throw new ArgumentNullException("dt");
+                throw new ArgumentNullException(nameof(dt));
             if (string.IsNullOrEmpty(dt.TableName))
-                throw new ArgumentException("TableName 属性必须为要操作的数据表的名称！");
+                throw new ArgumentException(nameof(dt.TableName));
             try
             {
                 var da = CreateAdapter();

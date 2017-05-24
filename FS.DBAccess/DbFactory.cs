@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using FS.I18N;
 
 namespace FS.DBAccess
 {
@@ -57,7 +58,7 @@ namespace FS.DBAccess
                 throw new ArgumentNullException(nameof(connectionName));
             var cfg = ConfigurationManager.ConnectionStrings[connectionName];
             if (cfg == null)
-                throw new ArgumentException(string.Format("未能找到名为 {0} 的连接字符串！", connectionName));
+                throw new ArgumentException(LangHelper.GetByID(150, connectionName));
 
             return Create(cfg.ProviderName, cfg.ConnectionString);
         }
@@ -74,7 +75,7 @@ namespace FS.DBAccess
             {
                 var factory = GetFactory(config.DBType);
                 if (factory == null)
-                    throw new NotImplementedException("暂未支持该类型数据库！");
+                    throw new NotImplementedException(LangHelper.GetByID(151));
                 DbProvider provider = null;
 
                 switch (config.DBType)
@@ -84,7 +85,7 @@ namespace FS.DBAccess
                         break;
 
                     default:
-                        throw new NotImplementedException("暂未支持该类型数据库！");
+                        throw new NotImplementedException(LangHelper.GetByID(151));
                 }
                 //provider.ProviderFactory = factory;
                 return provider;
@@ -111,7 +112,7 @@ namespace FS.DBAccess
             {
                 var factory = GetFactory(providerName);
                 if (factory == null)
-                    throw new NotImplementedException("暂未支持该类型数据库！");
+                    throw new NotImplementedException(LangHelper.GetByID(151));
                 var provider = new DbProviderImpl(factory, connectionString);
                 return provider;
             }
@@ -144,7 +145,7 @@ namespace FS.DBAccess
                 Password = password,
             };
             if (cfg.IsEmpty)
-                throw new ArgumentException("参数不完整，请保证所有传入参数不为空！");
+                throw new ArgumentException(LangHelper.GetByID(101));
             return Create(cfg);
         }
 

@@ -13,6 +13,7 @@ using System.Configuration;
 using FS.DBAccess;
 using FS.DbExtractor;
 using System.Windows.Forms;
+using FS.I18N;
 
 namespace FS.CodeTool
 {
@@ -89,9 +90,9 @@ namespace FS.CodeTool
                     sb.AppendLine("    }");
                     sb.AppendLine("}");
                     File.WriteAllText(Path.Combine(model.FilePath, table.TableName + ".cs"), sb.ToString(), Encoding.UTF8);
-                    logAction(string.Format("[{0}/{1}]生成文件：{2}", index, allcount, table.TableName + ".cs"));
+                    logAction(LangHelper.GetByID(200, index, allcount, table.TableName));
                 }
-                logAction("已经生成所有文件~");
+                logAction(LangHelper.GetByID(201));
             }
             catch (Exception ex)
             {

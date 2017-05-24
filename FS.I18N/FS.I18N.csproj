@@ -38,16 +38,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="I18NHelper.cs" />
+    <Compile Include="Keys\LangMsgKeys.cs" />
+    <Compile Include="LangHelper.cs" />
     <Compile Include="LanguageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StoreHelper.cs" />
     <Compile Include="XmlSerializeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Language\zh-CN.xml" />
+    <None Include="Language\zh-CN.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Language\en-us.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

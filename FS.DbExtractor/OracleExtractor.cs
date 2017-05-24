@@ -119,7 +119,7 @@ namespace FS.DbExtractor
             if (info == null)
                 throw new ArgumentNullException(nameof(info));
             if (string.IsNullOrEmpty(info.FieldType))
-                throw new ArgumentException(nameof(info.FieldType) + "不可为空！");
+                throw new ArgumentException(nameof(info.FieldType));
             info.DataType = SqlType2CsharpTypeStr(info.FieldType, info.IsNullable, info.FieldPrecision, info.FieldScale);
             return info.DataType;
         }
@@ -192,7 +192,7 @@ namespace FS.DbExtractor
                     break;
 
                 default:
-                    throw new Exception("未实现数据库字段类型 " + sqlType + " 的转换。");
+                    throw new Exception(I18N.LangHelper.GetByID(183, sqlType));
             }
             if (isNullable && !allowNull)
                 return val + "?";

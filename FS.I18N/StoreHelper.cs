@@ -25,7 +25,7 @@ namespace FS.I18N
         /// <returns></returns>
         public static LanguageModel LoadByCode(string code)
         {
-            var p = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, code + ".xml");
+            var p = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Language", code + ".xml");
             return LoadByFile(p);
         }
 
@@ -54,7 +54,7 @@ namespace FS.I18N
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
             if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException(nameof(filePath));
-            if (!File.Exists(filePath)) throw new ArgumentException("FilePath not exist:" + filePath);
+            //if (!File.Exists(filePath)) throw new ArgumentException("FilePath not exist:" + filePath);
 
             XmlSerializeHelper.Save(model, filePath);
         }

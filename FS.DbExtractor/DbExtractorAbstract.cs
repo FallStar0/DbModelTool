@@ -8,7 +8,7 @@ using FS.DBAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;
-
+using FS.I18N;
 namespace FS.DbExtractor
 {
     /// <summary>
@@ -114,7 +114,7 @@ namespace FS.DbExtractor
             if (string.IsNullOrEmpty(connString))
                 connString = ConnectionString;
             if (!connString.Contains(";"))
-                throw new ArgumentException("连接字符串必须包含分号(;)！");
+                throw new ArgumentException(LangHelper.GetByID(180));
             var sp1 = connString.Split(';');
             foreach (var item in sp1)
             {

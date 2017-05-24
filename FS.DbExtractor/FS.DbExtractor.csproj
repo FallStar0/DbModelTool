@@ -54,6 +54,10 @@
       <Project>{e5c8dd2e-e967-4e9e-b77b-7008b2b68fe4}</Project>
       <Name>FS.DBAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FS.I18N\FS.I18N.csproj">
+      <Project>{9c90bf96-fac3-4a95-9eeb-88d33a3f9e15}</Project>
+      <Name>FS.I18N</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

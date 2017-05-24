@@ -26,9 +26,9 @@ namespace FS.DBAccess
         public static string ToSqlParams<T>(string fieldName, IEnumerable<T> values)
         {
             if (string.IsNullOrEmpty(fieldName))
-                throw new ArgumentNullException("fieldName");
+                throw new ArgumentNullException(nameof(fieldName));
             if (values == null || values.Count() < 1)
-                throw new ArgumentException("values 的数量必须大于0。");
+                throw new ArgumentException(nameof(values));
 
             var sb = new StringBuilder();
             sb.Append(fieldName);

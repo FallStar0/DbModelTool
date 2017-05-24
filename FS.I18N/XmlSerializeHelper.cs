@@ -24,6 +24,9 @@ namespace FS.I18N
         /// <param name="filePath">文件路径</param>
         public static void Save(object obj, string filePath)
         {
+            var dir = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
             using (var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite))
             {
                 XmlSerializer serializer = new XmlSerializer(obj.GetType());

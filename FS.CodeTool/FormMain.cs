@@ -1,50 +1,87 @@
 ﻿using FS.DBAccess;
+using FS.I18N;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace FS.CodeTool
 {
-    public partial class AeroWizard1 : Form
+    public partial class FormMain : Form
     {
         #region Vars
         private string currentDbName = null;
         #endregion
 
         #region Init
-        public AeroWizard1()
+        public FormMain()
         {
             InitializeComponent();
-            this.Load += AeroWizard1_Load;
-            this.wpDbNames.Initialize += WpDbNames_Initialize;
-            this.wpDbNames.Commit += WpDbNames_Commit;
 
-            this.wpTables.Initialize += WpTables_Initialize;
-            this.wpTables.Commit += WpTables_Commit;
-            cblbTables.ItemCheck += CblbTables_ItemCheck;
-            cbAllTables.CheckedChanged += CbAllTables_CheckedChanged;
-
-            this.wpSettings.Commit += WpSettings_Commit;
-
-            this.wpResult.Initialize += WpResult_Initialize;
-            this.btnGenFiles.Click += (s, e) => BeginToGenFiles();
+            this.Load += FormLoaded;
         }
 
-
-        private void AeroWizard1_Load(object sender, EventArgs e)
+        private void FormLoaded(object sender, EventArgs e)
         {
+            cbAllTables.CheckedChanged += CbAllTables_CheckedChanged;
+            this.btnGenFiles.Click += (s, o) => BeginToGenFiles();
 
+
+            InitUIMessage();
+            cbLanguage.Items.Clear();
+            cbLanguage.Items.Add("中文");
+            cbLanguage.Items.Add("English");
+            cbLanguage.SelectedIndex = 0;
+            cbLanguage.SelectedIndexChanged += CbLanguage_SelectedIndexChanged;
+
+            InitDbNames();
+            lbConStringName.DoubleClick += (s, o) => SelectDbName();
+        }
+        #endregion
+
+
+        #region UI-Language
+        /// <summary>
+        /// 初始化UI信息
+        /// </summary>
+        private void InitUIMessage()
+        {
+            this.Text = LangHelper.GetByID(205);
+            tpDbNames.Text = LangHelper.GetByID(206);
+            this.tpTables.Text = LangHelper.GetByID(208);
+            this.tpSettings.Text = LangHelper.GetByID(LangMsgKeys.Option);
+            this.tpResult.Text = LangHelper.GetByID(LangMsgKeys.Result);
+
+            lblDbNameTip.Text = LangHelper.GetByID(207);
+
+            this.cbAllTables.Text = LangHelper.GetByID(LangMsgKeys.SelectAll);
+
+            this.lblFilePath.Text = LangHelper.GetByID(209);
+
+            this.lblNameSpace.Text = LangHelper.GetByID(210);
+
+            this.btnGenFiles.Text = LangHelper.GetByID(LangMsgKeys.Generate);
+        }
+
+        private void CbLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var cb = sender as ComboBox;
+            var lang = cb.SelectedItem.ToString();
+            string langCode = "zh-CN";
+            if (lang == "English")
+                langCode = "en-us";
+            LangHelper.LoadLanguage(langCode);
+
+            InitUIMessage();
         }
         #endregion
 
         #region Page-DbNames
-        private void WpDbNames_Initialize(object sender, AeroWizard.WizardPageInitEventArgs e)
-        {
-            InitDbNames();
-        }
-
         private void InitDbNames()
         {
             var dbNames = MainManager.GetDbConnectionNames();
@@ -55,26 +92,14 @@ namespace FS.CodeTool
             }
             if (dbNames.Count > 0)
                 lbConStringName.SelectedIndex = 0;
-
-            wpDbNames.AllowNext = dbNames.Count > 0;
         }
 
-        private void WpDbNames_Commit(object sender, AeroWizard.WizardPageConfirmEventArgs e)
+        private async void SelectDbName()
         {
-
-        }
-        #endregion
-
-        #region Page-Table
-        private List<DbTableInfo> tableInfos = null;
-        private async void WpTables_Initialize(object sender, AeroWizard.WizardPageInitEventArgs e)
-        {
-            e.Page.AllowNext = false;
             if (lbConStringName.SelectedIndex == -1)
             {
                 return;
             }
-
             var dbName = lbConStringName.SelectedItem.ToString();
             if (dbName == currentDbName) return;
             currentDbName = dbName;
@@ -100,19 +125,12 @@ namespace FS.CodeTool
             {
                 cblbTables.Items.Add(item.TableName);
             }
-            e.Page.AllowNext = true;
+            tabControl1.SelectedIndex = 1;
         }
+        #endregion
 
-        private void WpTables_Commit(object sender, AeroWizard.WizardPageConfirmEventArgs e)
-        {
-
-        }
-
-        private void CblbTables_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            var cblb = sender as CheckedListBox;
-            wpTables.AllowNext = cblb.CheckedItems.Count > 0;
-        }
+        #region Page-Table
+        private List<DbTableInfo> tableInfos = null;
 
         private void CbAllTables_CheckedChanged(object sender, EventArgs e)
         {
@@ -125,28 +143,10 @@ namespace FS.CodeTool
         #endregion
 
         #region Page-Config
-        private void WpSettings_Commit(object sender, AeroWizard.WizardPageConfirmEventArgs e)
-        {
-            var nameSpace = txtNameSpace.Text.Trim();
-            var fileDir = txtGenPath.Text.Trim();
-            if (string.IsNullOrEmpty(nameSpace))
-                nameSpace = "Model";
-            if (string.IsNullOrEmpty(fileDir))
-                fileDir = "Models\\";
-            Properties.Settings.Default.ModelNameSpace = nameSpace;
-            Properties.Settings.Default.ModelGeneratePath = fileDir;
-            Properties.Settings.Default.Save();
-        }
+
         #endregion
 
         #region Page-Result
-        private bool hasGen = false;
-        private void WpResult_Initialize(object sender, AeroWizard.WizardPageInitEventArgs e)
-        {
-            if (hasGen) return;
-            hasGen = true;
-            BeginToGenFiles();
-        }
 
         private void BeginToGenFiles()
         {
@@ -156,11 +156,16 @@ namespace FS.CodeTool
                 nameSpace = "Model";
             if (string.IsNullOrEmpty(fileDir))
                 fileDir = "Models\\";
+
+            Properties.Settings.Default.ModelNameSpace = nameSpace;
+            Properties.Settings.Default.ModelGeneratePath = fileDir;
+            Properties.Settings.Default.Save();
+
             txtResultLog.Clear();
-            AddResultLog("开始生成模型文件~");
+            AddResultLog(LangHelper.GetByID(202));
             if (tableInfos == null)
             {
-                AddResultLog("没有对应的表信息，中断！");
+                AddResultLog(LangHelper.GetByID(203));
                 return;
             }
             var selTables = new List<DbTableInfo>();
@@ -171,7 +176,7 @@ namespace FS.CodeTool
                 if (it == null) continue;
                 selTables.Add(it);
             }
-            AddResultLog("需要处理的表数量：" + selTables.Count);
+            AddResultLog(LangHelper.GetByID(204) + selTables.Count);
             var mo = new GenFileModel()
             {
                 FilePath = fileDir,

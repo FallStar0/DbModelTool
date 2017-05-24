@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FS.DBAccess;
 using System.Configuration;
+using FS.I18N;
 
 namespace FS.DbExtractor
 {
@@ -30,7 +31,7 @@ namespace FS.DbExtractor
             var proName = cfg.ProviderName;
             if (string.IsNullOrEmpty(proName))
             {
-                throw new InvalidOperationException(string.Format("连接字符串 {0} 未设置ProviderName！", dbConnectionName));
+                throw new InvalidOperationException(LangHelper.GetByID(181, dbConnectionName));
             }
             DBType dbType = DBType.Oracle;
             if (proName.Contains("Oracle.ManagedDataAccess"))
@@ -69,7 +70,7 @@ namespace FS.DbExtractor
                     return new MssqlExtractor();
 
                 default:
-                    throw new ArgumentException("暂未支持数据库类型：" + type);
+                    throw new ArgumentException(LangHelper.GetByID(182, type));
             }
 
         }
