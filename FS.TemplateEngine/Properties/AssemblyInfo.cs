@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("FS.Test")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("FS.TemplateEngine")]
+[assembly: AssemblyDescription("模板引擎")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Fallstar")]
-[assembly: AssemblyProduct("FS.Test")]
+[assembly: AssemblyProduct("FS.TemplateEngine")]
 [assembly: AssemblyCopyright("Copyright © Fallstar 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("9df7328c-2014-4b59-84c5-6983c504a342")]
+[assembly: Guid("b061cf8f-eec9-4f60-b6e0-96c5319b65d4")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

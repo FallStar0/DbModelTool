@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9C90BF96-FAC3-4A95-9EEB-88D33A3F9E15}</ProjectGuid>
+    <ProjectGuid>{B061CF8F-EEC9-4F60-B6E0-96C5319B65D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FS.I18N</RootNamespace>
-    <AssemblyName>FS.I18N</AssemblyName>
+    <RootNamespace>FS.TemplateEngine</RootNamespace>
+    <AssemblyName>FS.TemplateEngine</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,30 +30,44 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RazorEngine, Version=3.9.3.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.9.3\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Keys\LangMsgKeys.cs" />
-    <Compile Include="LangHelper.cs" />
-    <Compile Include="LanguageModel.cs" />
+    <Compile Include="ComDbInfos.cs" />
+    <Compile Include="TempHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StoreHelper.cs" />
-    <Compile Include="XmlSerializeHelper.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Language\default.xml">
+    <None Include="packages.config" />
+    <None Include="Templates\DbTableModel.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Language\en-us.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <ProjectReference Include="..\FS.DBAccess\FS.DBAccess.csproj">
+      <Project>{e5c8dd2e-e967-4e9e-b77b-7008b2b68fe4}</Project>
+      <Name>FS.DBAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FS.I18N\FS.I18N.csproj">
+      <Project>{9c90bf96-fac3-4a95-9eeb-88d33a3f9e15}</Project>
+      <Name>FS.I18N</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

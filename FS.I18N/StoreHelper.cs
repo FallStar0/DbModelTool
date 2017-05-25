@@ -26,6 +26,8 @@ namespace FS.I18N
         public static LanguageModel LoadByCode(string code)
         {
             var p = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Language", code + ".xml");
+            if (!File.Exists(p))
+                p = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Language", "default.xml");
             return LoadByFile(p);
         }
 

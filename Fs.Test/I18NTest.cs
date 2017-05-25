@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FS.I18N;
 using System.IO;
 
-namespace Fs.Test
+namespace FS.Test
 {
     [TestClass]
     public class I18NTest
