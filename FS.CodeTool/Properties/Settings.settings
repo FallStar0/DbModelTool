@@ -8,5 +8,8 @@
     <Setting Name="ModelGeneratePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">Models\</Value>
     </Setting>
+    <Setting Name="ModelTemlpateName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">default</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

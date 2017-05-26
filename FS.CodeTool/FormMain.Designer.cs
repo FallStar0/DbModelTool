@@ -38,27 +38,34 @@
             this.cbAllTables = new System.Windows.Forms.CheckBox();
             this.cblbTables = new System.Windows.Forms.CheckedListBox();
             this.tpSettings = new System.Windows.Forms.TabPage();
+            this.cbTemplateName = new System.Windows.Forms.ComboBox();
             this.txtGenPath = new System.Windows.Forms.TextBox();
             this.txtNameSpace = new System.Windows.Forms.TextBox();
+            this.lblTemplateName = new System.Windows.Forms.Label();
             this.lblFilePath = new System.Windows.Forms.Label();
             this.lblNameSpace = new System.Windows.Forms.Label();
             this.tpResult = new System.Windows.Forms.TabPage();
-            this.btnGenFiles = new System.Windows.Forms.Button();
             this.txtResultLog = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnGenFiles = new System.Windows.Forms.Button();
+            this.btnSettingNext = new System.Windows.Forms.Button();
+            this.btnDbNext = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnTableNext = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpDbNames.SuspendLayout();
             this.tpTables.SuspendLayout();
             this.tpSettings.SuspendLayout();
             this.tpResult.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tpSettings);
             this.tabControl1.Controls.Add(this.tpDbNames);
             this.tabControl1.Controls.Add(this.tpTables);
-            this.tabControl1.Controls.Add(this.tpSettings);
             this.tabControl1.Controls.Add(this.tpResult);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -69,8 +76,8 @@
             // 
             // tpDbNames
             // 
+            this.tpDbNames.Controls.Add(this.btnDbNext);
             this.tpDbNames.Controls.Add(this.lblDbNameTip);
-            this.tpDbNames.Controls.Add(this.cbLanguage);
             this.tpDbNames.Controls.Add(this.lbConStringName);
             this.tpDbNames.Location = new System.Drawing.Point(4, 29);
             this.tpDbNames.Name = "tpDbNames";
@@ -82,11 +89,10 @@
             // 
             // lblDbNameTip
             // 
-            this.lblDbNameTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblDbNameTip.AutoSize = true;
-            this.lblDbNameTip.Location = new System.Drawing.Point(327, 379);
+            this.lblDbNameTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDbNameTip.Location = new System.Drawing.Point(439, 15);
             this.lblDbNameTip.Name = "lblDbNameTip";
-            this.lblDbNameTip.Size = new System.Drawing.Size(121, 20);
+            this.lblDbNameTip.Size = new System.Drawing.Size(121, 102);
             this.lblDbNameTip.TabIndex = 5;
             this.lblDbNameTip.Text = "双击选择数据库";
             // 
@@ -95,7 +101,7 @@
             this.cbLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLanguage.FormattingEnabled = true;
-            this.cbLanguage.Location = new System.Drawing.Point(445, 8);
+            this.cbLanguage.Location = new System.Drawing.Point(435, 13);
             this.cbLanguage.Name = "cbLanguage";
             this.cbLanguage.Size = new System.Drawing.Size(121, 28);
             this.cbLanguage.TabIndex = 4;
@@ -113,13 +119,13 @@
             this.lbConStringName.Location = new System.Drawing.Point(3, 3);
             this.lbConStringName.Margin = new System.Windows.Forms.Padding(0);
             this.lbConStringName.Name = "lbConStringName";
-            this.lbConStringName.Size = new System.Drawing.Size(308, 408);
+            this.lbConStringName.Size = new System.Drawing.Size(408, 408);
             this.lbConStringName.TabIndex = 3;
             // 
             // tpTables
             // 
-            this.tpTables.Controls.Add(this.cbAllTables);
             this.tpTables.Controls.Add(this.cblbTables);
+            this.tpTables.Controls.Add(this.panel2);
             this.tpTables.Location = new System.Drawing.Point(4, 29);
             this.tpTables.Name = "tpTables";
             this.tpTables.Padding = new System.Windows.Forms.Padding(3);
@@ -132,9 +138,7 @@
             // 
             this.cbAllTables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAllTables.AutoSize = true;
-            this.cbAllTables.Checked = true;
-            this.cbAllTables.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbAllTables.Location = new System.Drawing.Point(475, 21);
+            this.cbAllTables.Location = new System.Drawing.Point(29, 13);
             this.cbAllTables.Margin = new System.Windows.Forms.Padding(1);
             this.cbAllTables.Name = "cbAllTables";
             this.cbAllTables.Size = new System.Drawing.Size(60, 24);
@@ -151,13 +155,17 @@
             this.cblbTables.Location = new System.Drawing.Point(3, 3);
             this.cblbTables.Margin = new System.Windows.Forms.Padding(0);
             this.cblbTables.Name = "cblbTables";
-            this.cblbTables.Size = new System.Drawing.Size(568, 408);
+            this.cblbTables.Size = new System.Drawing.Size(448, 408);
             this.cblbTables.TabIndex = 2;
             // 
             // tpSettings
             // 
+            this.tpSettings.Controls.Add(this.btnSettingNext);
+            this.tpSettings.Controls.Add(this.cbLanguage);
+            this.tpSettings.Controls.Add(this.cbTemplateName);
             this.tpSettings.Controls.Add(this.txtGenPath);
             this.tpSettings.Controls.Add(this.txtNameSpace);
+            this.tpSettings.Controls.Add(this.lblTemplateName);
             this.tpSettings.Controls.Add(this.lblFilePath);
             this.tpSettings.Controls.Add(this.lblNameSpace);
             this.tpSettings.Location = new System.Drawing.Point(4, 29);
@@ -166,6 +174,15 @@
             this.tpSettings.TabIndex = 2;
             this.tpSettings.Text = "选项";
             this.tpSettings.UseVisualStyleBackColor = true;
+            // 
+            // cbTemplateName
+            // 
+            this.cbTemplateName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTemplateName.FormattingEnabled = true;
+            this.cbTemplateName.Location = new System.Drawing.Point(131, 107);
+            this.cbTemplateName.Name = "cbTemplateName";
+            this.cbTemplateName.Size = new System.Drawing.Size(280, 28);
+            this.cbTemplateName.TabIndex = 6;
             // 
             // txtGenPath
             // 
@@ -186,6 +203,16 @@
             this.txtNameSpace.Size = new System.Drawing.Size(280, 28);
             this.txtNameSpace.TabIndex = 5;
             this.txtNameSpace.Text = global::FS.CodeTool.Properties.Settings.Default.ModelNameSpace;
+            // 
+            // lblTemplateName
+            // 
+            this.lblTemplateName.AutoSize = true;
+            this.lblTemplateName.Location = new System.Drawing.Point(9, 110);
+            this.lblTemplateName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.lblTemplateName.Name = "lblTemplateName";
+            this.lblTemplateName.Size = new System.Drawing.Size(89, 20);
+            this.lblTemplateName.TabIndex = 2;
+            this.lblTemplateName.Text = "模板名称：";
             // 
             // lblFilePath
             // 
@@ -218,18 +245,6 @@
             this.tpResult.Text = "结果";
             this.tpResult.UseVisualStyleBackColor = true;
             // 
-            // btnGenFiles
-            // 
-            this.btnGenFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenFiles.Font = new System.Drawing.Font("Microsoft YaHei UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-            this.btnGenFiles.Location = new System.Drawing.Point(7, 1);
-            this.btnGenFiles.Margin = new System.Windows.Forms.Padding(1);
-            this.btnGenFiles.Name = "btnGenFiles";
-            this.btnGenFiles.Size = new System.Drawing.Size(82, 50);
-            this.btnGenFiles.TabIndex = 3;
-            this.btnGenFiles.Text = "生成";
-            this.btnGenFiles.UseVisualStyleBackColor = true;
-            // 
             // txtResultLog
             // 
             this.txtResultLog.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -238,17 +253,69 @@
             this.txtResultLog.Multiline = true;
             this.txtResultLog.Name = "txtResultLog";
             this.txtResultLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResultLog.Size = new System.Drawing.Size(479, 414);
+            this.txtResultLog.Size = new System.Drawing.Size(454, 414);
             this.txtResultLog.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnGenFiles);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(479, 0);
+            this.panel1.Location = new System.Drawing.Point(454, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(95, 414);
+            this.panel1.Size = new System.Drawing.Size(120, 414);
             this.panel1.TabIndex = 4;
+            // 
+            // btnGenFiles
+            // 
+            this.btnGenFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenFiles.Font = new System.Drawing.Font("Microsoft YaHei UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
+            this.btnGenFiles.Location = new System.Drawing.Point(17, 1);
+            this.btnGenFiles.Margin = new System.Windows.Forms.Padding(1);
+            this.btnGenFiles.Name = "btnGenFiles";
+            this.btnGenFiles.Size = new System.Drawing.Size(97, 50);
+            this.btnGenFiles.TabIndex = 3;
+            this.btnGenFiles.Text = "生成";
+            this.btnGenFiles.UseVisualStyleBackColor = true;
+            // 
+            // btnSettingNext
+            // 
+            this.btnSettingNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSettingNext.Location = new System.Drawing.Point(460, 362);
+            this.btnSettingNext.Name = "btnSettingNext";
+            this.btnSettingNext.Size = new System.Drawing.Size(100, 40);
+            this.btnSettingNext.TabIndex = 7;
+            this.btnSettingNext.Text = "下一步";
+            this.btnSettingNext.UseVisualStyleBackColor = true;
+            // 
+            // btnDbNext
+            // 
+            this.btnDbNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDbNext.Location = new System.Drawing.Point(460, 362);
+            this.btnDbNext.Name = "btnDbNext";
+            this.btnDbNext.Size = new System.Drawing.Size(100, 40);
+            this.btnDbNext.TabIndex = 8;
+            this.btnDbNext.Text = "下一步";
+            this.btnDbNext.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnTableNext);
+            this.panel2.Controls.Add(this.cbAllTables);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(451, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(120, 408);
+            this.panel2.TabIndex = 4;
+            // 
+            // btnTableNext
+            // 
+            this.btnTableNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTableNext.Location = new System.Drawing.Point(15, 363);
+            this.btnTableNext.Name = "btnTableNext";
+            this.btnTableNext.Size = new System.Drawing.Size(100, 40);
+            this.btnTableNext.TabIndex = 9;
+            this.btnTableNext.Text = "下一步";
+            this.btnTableNext.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -264,14 +331,14 @@
             this.Text = "模型构建工具";
             this.tabControl1.ResumeLayout(false);
             this.tpDbNames.ResumeLayout(false);
-            this.tpDbNames.PerformLayout();
             this.tpTables.ResumeLayout(false);
-            this.tpTables.PerformLayout();
             this.tpSettings.ResumeLayout(false);
             this.tpSettings.PerformLayout();
             this.tpResult.ResumeLayout(false);
             this.tpResult.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -295,5 +362,11 @@
         private System.Windows.Forms.TextBox txtResultLog;
         private System.Windows.Forms.Label lblDbNameTip;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblTemplateName;
+        private System.Windows.Forms.ComboBox cbTemplateName;
+        private System.Windows.Forms.Button btnSettingNext;
+        private System.Windows.Forms.Button btnDbNext;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnTableNext;
     }
 }

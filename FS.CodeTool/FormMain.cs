@@ -33,14 +33,43 @@ namespace FS.CodeTool
 
 
             InitUIMessage();
+            InitSettings();
+
+
+            InitDbNames();
+            lbConStringName.DoubleClick += (s, o) => SelectDbName();
+
+            btnSettingNext.Click += (s, o) => tabControl1.SelectedIndex = 1;
+            btnDbNext.Click += (s, o) => tabControl1.SelectedIndex = 2;
+            btnTableNext.Click += (s, o) => tabControl1.SelectedIndex = 3;
+        }
+        #endregion
+
+        #region Page-Config
+        private void InitSettings()
+        {
             cbLanguage.Items.Clear();
             cbLanguage.Items.Add("中文");
             cbLanguage.Items.Add("English");
             cbLanguage.SelectedIndex = 0;
             cbLanguage.SelectedIndexChanged += CbLanguage_SelectedIndexChanged;
 
-            InitDbNames();
-            lbConStringName.DoubleClick += (s, o) => SelectDbName();
+            var selTemp = Properties.Settings.Default.ModelTemlpateName;
+            cbTemplateName.Items.Clear();
+            cbTemplateName.Items.Add("Default");
+            var temps = MainManager.GetTemplates();
+            foreach (var item in temps)
+            {
+                cbTemplateName.Items.Add(item);
+            }
+
+            cbTemplateName.SelectedIndex = 0;
+            if (!string.IsNullOrEmpty(selTemp) && selTemp.ToLower() != "default")
+            {
+                var it = temps.FirstOrDefault(x => x == selTemp);
+                if (it != null)
+                    cbTemplateName.SelectedIndex = temps.IndexOf(it) + 1;
+            }
         }
         #endregion
 
@@ -64,8 +93,12 @@ namespace FS.CodeTool
             this.lblFilePath.Text = LangHelper.GetByID(209);
 
             this.lblNameSpace.Text = LangHelper.GetByID(210);
+            this.lblTemplateName.Text = LangHelper.GetByID(211);
 
             this.btnGenFiles.Text = LangHelper.GetByID(LangMsgKeys.Generate);
+            btnSettingNext.Text = LangHelper.GetByID(LangMsgKeys.Next);
+            btnDbNext.Text = LangHelper.GetByID(LangMsgKeys.Next);
+            btnTableNext.Text = LangHelper.GetByID(LangMsgKeys.Next);
         }
 
         private void CbLanguage_SelectedIndexChanged(object sender, EventArgs e)
@@ -125,7 +158,7 @@ namespace FS.CodeTool
             {
                 cblbTables.Items.Add(item.TableName);
             }
-            tabControl1.SelectedIndex = 1;
+            tabControl1.SelectedIndex = 2;
         }
         #endregion
 
@@ -140,10 +173,6 @@ namespace FS.CodeTool
                 cblbTables.SetItemChecked(i, isCheck);
             }
         }
-        #endregion
-
-        #region Page-Config
-
         #endregion
 
         #region Page-Result

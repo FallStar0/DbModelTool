@@ -46,5 +46,17 @@ namespace FS.CodeTool.Properties {
                 this["ModelGeneratePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("default")]
+        public string ModelTemlpateName {
+            get {
+                return ((string)(this["ModelTemlpateName"]));
+            }
+            set {
+                this["ModelTemlpateName"] = value;
+            }
+        }
     }
 }

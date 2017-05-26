@@ -106,6 +106,10 @@
       <Project>{9c90bf96-fac3-4a95-9eeb-88d33a3f9e15}</Project>
       <Name>FS.I18N</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FS.TemplateEngine\FS.TemplateEngine.csproj">
+      <Project>{b061cf8f-eec9-4f60-b6e0-96c5319b65d4}</Project>
+      <Name>FS.TemplateEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

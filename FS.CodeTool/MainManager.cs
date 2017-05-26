@@ -36,6 +36,22 @@ namespace FS.CodeTool
         }
 
         /// <summary>
+        /// 获取模板文件
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetTemplates()
+        {
+            var names = new List<string>();
+            var ts = TemplateEngine.TempHelper.GetTemplateList();
+            if (ts == null || ts.Count == 0) return names;
+            foreach (var item in ts)
+            {
+                names.Add(Path.GetFileName(item));
+            }
+            return names;
+        }
+
+        /// <summary>
         /// 通过连接字符串名称，来获取该数据库所有表的信息
         /// </summary>
         /// <param name="dbConnectionName"></param>
@@ -56,9 +72,9 @@ namespace FS.CodeTool
             {
                 if (!Directory.Exists(model.FilePath))
                     Directory.CreateDirectory(model.FilePath);
-                var sb = new StringBuilder();
                 var index = 0;
                 var allcount = model.Tables.Count;
+                string content = null;
                 foreach (var table in model.Tables)
                 {
                     index++;
@@ -68,28 +84,12 @@ namespace FS.CodeTool
                         logAction(table.TableName + "：" + ret.ReplyMsg);
                         continue;
                     }
-                    sb.Clear();
-                    sb.AppendLine("using System;");
-                    sb.AppendLine("using System.Collections.Generic;");
-                    sb.AppendLine("using System.Linq;");
-                    sb.AppendLine("");
-                    sb.AppendLine("namespace " + model.NameSpace);
-                    sb.AppendLine("{");
-                    sb.AppendLine("    /// <summary>");
-                    sb.AppendLine("    /// " + table.Description ?? table.TableName);
-                    sb.AppendLine("    /// </summary>");
-                    sb.AppendLine("    public partial class " + table.TableName);
-                    sb.AppendLine("    {");
-                    foreach (var field in table.Fileds)
-                    {
-                        sb.AppendLine("        /// <summary>");
-                        sb.AppendLine("        /// " + field.Description);
-                        sb.AppendLine("        /// </summary>");
-                        sb.AppendLine("        public " + field.DataTypeEx + " " + field.FieldName + " { get; set; }");
-                    }
-                    sb.AppendLine("    }");
-                    sb.AppendLine("}");
-                    File.WriteAllText(Path.Combine(model.FilePath, table.TableName + ".cs"), sb.ToString(), Encoding.UTF8);
+                    //这是写死的
+                    content = HardcodeString(table, model.NameSpace);
+                    //这是用模板生成的
+
+
+                    File.WriteAllText(Path.Combine(model.FilePath, table.TableName + ".cs"), content, Encoding.UTF8);
                     logAction(LangHelper.GetByID(200, index, allcount, table.TableName));
                 }
                 logAction(LangHelper.GetByID(201));
@@ -99,6 +99,38 @@ namespace FS.CodeTool
                 logAction(ex.Message + ex.StackTrace);
             }
 
+        }
+
+        /// <summary>
+        /// 写死的模型
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="nameSpace"></param>
+        /// <returns></returns>
+        private static string HardcodeString(DbTableInfo table, string nameSpace)
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("using System;");
+            sb.AppendLine("using System.Collections.Generic;");
+            sb.AppendLine("using System.Linq;");
+            sb.AppendLine("");
+            sb.AppendLine("namespace " + nameSpace);
+            sb.AppendLine("{");
+            sb.AppendLine("    /// <summary>");
+            sb.AppendLine("    /// " + table.Description ?? table.TableName);
+            sb.AppendLine("    /// </summary>");
+            sb.AppendLine("    public partial class " + table.TableName);
+            sb.AppendLine("    {");
+            foreach (var field in table.Fileds)
+            {
+                sb.AppendLine("        /// <summary>");
+                sb.AppendLine("        /// " + field.Description);
+                sb.AppendLine("        /// </summary>");
+                sb.AppendLine("        public " + field.DataTypeEx + " " + field.FieldName + " { get; set; }");
+            }
+            sb.AppendLine("    }");
+            sb.AppendLine("}");
+            return sb.ToString();
         }
     }
 }

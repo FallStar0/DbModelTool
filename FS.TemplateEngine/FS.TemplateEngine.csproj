@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComDbInfos.cs" />
+    <Compile Include="HtmlHelper.cs" />
     <Compile Include="TempHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
