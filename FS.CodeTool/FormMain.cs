@@ -186,8 +186,12 @@ namespace FS.CodeTool
             if (string.IsNullOrEmpty(fileDir))
                 fileDir = "Models\\";
 
+            var temp = cbTemplateName.SelectedItem.ToString();
+
+
             Properties.Settings.Default.ModelNameSpace = nameSpace;
             Properties.Settings.Default.ModelGeneratePath = fileDir;
+            Properties.Settings.Default.ModelTemlpateName = temp;
             Properties.Settings.Default.Save();
 
             txtResultLog.Clear();
@@ -210,7 +214,8 @@ namespace FS.CodeTool
             {
                 FilePath = fileDir,
                 NameSpace = nameSpace,
-                Tables = selTables
+                Tables = selTables,
+                TemplateName = temp,
             };
             Task.Run(() => MainManager.GenFiles(mo, AddResultLog));
         }

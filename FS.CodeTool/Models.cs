@@ -24,5 +24,9 @@ namespace FS.CodeTool
         /// 模型命名空间
         /// </summary>
         public string NameSpace { get; set; }
+        /// <summary>
+        /// 模板名称
+        /// </summary>
+        public string TemplateName { get; set; }
     }
 }

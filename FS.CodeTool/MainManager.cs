@@ -14,6 +14,7 @@ using FS.DBAccess;
 using FS.DbExtractor;
 using System.Windows.Forms;
 using FS.I18N;
+using FS.TemplateEngine;
 
 namespace FS.CodeTool
 {
@@ -84,10 +85,20 @@ namespace FS.CodeTool
                         logAction(table.TableName + "：" + ret.ReplyMsg);
                         continue;
                     }
-                    //这是写死的
-                    content = HardcodeString(table, model.NameSpace);
-                    //这是用模板生成的
-
+                    if(model.TemplateName=="default")
+                    {
+                        //这是写死的
+                        content = HardcodeString(table, model.NameSpace);
+                    }else
+                    {
+                        //这是用模板生成的
+                        var m = new ComDbInfos()
+                        {
+                            NameSpace = model.NameSpace,
+                            Table = table
+                        };
+                        content = TempHelper.GenCode(model.TemplateName, m);
+                    }
 
                     File.WriteAllText(Path.Combine(model.FilePath, table.TableName + ".cs"), content, Encoding.UTF8);
                     logAction(LangHelper.GetByID(200, index, allcount, table.TableName));

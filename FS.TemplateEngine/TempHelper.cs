@@ -36,12 +36,32 @@ namespace FS.TemplateEngine
         {
             if (!Directory.Exists(TemplateFolder))
                 throw new DirectoryNotFoundException(TemplateFolder);
-            var files = Directory.GetFiles(TemplateFolder, ".cshtml");
+            var files = Directory.GetFiles(TemplateFolder, "*.cshtml");
             return files.ToList();
         }
         #endregion
 
-        #region 生成文件
+        #region 生成
+        /// <summary>
+        /// 生成代码字符串
+        /// </summary>
+        /// <param name="tempFile"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public static string GenCode(string tempFile, object model)
+        {
+            if (string.IsNullOrEmpty(tempFile)) throw new ArgumentNullException(nameof(tempFile));
+            if (model == null) throw new ArgumentNullException(nameof(model));
+            if (!tempFile.Contains("/"))
+            {
+                tempFile = Path.Combine(TemplateFolder, tempFile);
+            }
+            var n = Path.GetFileName(tempFile);
+            var t = File.ReadAllText(tempFile);
+            var result = Engine.Razor.RunCompile(t, n, model.GetType(), model);
+            return result;
+        }
+
         public static void GenFile(string tempFile, object model)
         {
             var n = Path.GetFileName(tempFile);
