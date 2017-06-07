@@ -85,11 +85,12 @@ namespace FS.CodeTool
                         logAction(table.TableName + "：" + ret.ReplyMsg);
                         continue;
                     }
-                    if(model.TemplateName=="default")
+                    if (model.TemplateName.ToLower() == "default")
                     {
                         //这是写死的
                         content = HardcodeString(table, model.NameSpace);
-                    }else
+                    }
+                    else
                     {
                         //这是用模板生成的
                         var m = new ComDbInfos()
