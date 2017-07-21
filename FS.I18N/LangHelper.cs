@@ -86,7 +86,7 @@ namespace FS.I18N
         {
             var m = CheckModel();
             var msg = m.GetByID(id);
-            if (pars == null) return msg;
+            if (pars == null || pars.Length == 0) return msg;
             return string.Format(msg, pars);
         }
         /// <summary>
@@ -99,7 +99,7 @@ namespace FS.I18N
         {
             var m = CheckModel();
             var msg = m.GetByID((uint)id);
-            if (pars == null) return msg;
+            if (pars == null || pars.Length == 0) return msg;
             return string.Format(msg, pars);
         }
         /// <summary>
@@ -122,8 +122,55 @@ namespace FS.I18N
         {
             var m = CheckModel();
             var msg = m.GetByKey(key);
-            if (pars == null) return msg;
+            if (pars == null || pars.Length == 0) return msg;
             return string.Format(msg, pars);
+        }
+
+        /// <summary>
+        /// 通过ID获取字符串，并进行字符串格式化，提供默认值
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="defaultValue">默认值</param>
+        /// <param name="pars">附带的参数</param>
+        /// <returns></returns>
+        public static string GetRes(uint id, string defaultValue = null, params object[] pars)
+        {
+            var m = CheckModel();
+            if (m == null)
+            {
+                if (defaultValue == null)
+                    return id.ToString();
+                return defaultValue;
+            }
+            return m.GetRes(id, defaultValue, pars);
+        }
+
+        /// <summary>
+        /// 通过ID获取字符串，并进行字符串格式化，提供默认值
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="defaultValue">默认值</param>
+        /// <param name="pars">附带的参数</param>
+        /// <returns></returns>
+        public static string GetRes(LangMsgKeys id, string defaultValue = null, params object[] pars)
+        {
+            var m = CheckModel();
+            if (m == null) return defaultValue ?? id.ToString();
+            return m.GetRes(id, defaultValue, pars);
+        }
+
+        /// <summary>
+        /// 通过ID获取字符串，并进行字符串格式化，提供默认值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue">默认值</param>
+        /// <param name="pars">附带的参数</param>
+        /// <returns></returns>
+        public static string GetRes(string key, string defaultValue = null, params object[] pars)
+        {
+            var m = CheckModel();
+            if (m == null) return defaultValue;
+            return m.GetRes(key, defaultValue, pars);
         }
         #endregion
 

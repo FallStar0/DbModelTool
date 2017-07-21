@@ -77,27 +77,88 @@ namespace FS.I18N
             dicKey = dic2;
         }
         /// <summary>
-        /// 通过LocID来获取字符串
+        /// 通过LocID来获取字符串，如果获取不到就返回null
         /// </summary>
         /// <param name="locID"></param>
         /// <returns></returns>
-        public string GetByID(uint locID)
+        internal string GetByID(uint locID)
         {
             if (dicID == null) Init();
             if (dicID.ContainsKey(locID)) return dicID[locID];
             return null;
         }
         /// <summary>
-        /// 通过字符串Key来获取字符串
+        /// 通过字符串Key来获取字符串，如果获取不到就返回null
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public string GetByKey(string key)
+        internal string GetByKey(string key)
         {
             if (dicKey == null) Init();
             if (dicKey.ContainsKey(key)) return dicKey[key];
             return null;
         }
+
+        /// <summary>
+        /// 通过ID获取字符串，并进行字符串格式化，提供默认值
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="defaultValue">默认值</param>
+        /// <param name="pars">附带的参数</param>
+        /// <returns></returns>
+        public string GetRes(uint id, string defaultValue = null, params object[] pars)
+        {
+            var msg = GetByID(id);
+            if (msg == null)
+            {
+                if (defaultValue == null)
+                    return id.ToString();
+                msg = defaultValue;
+            }
+            if (pars == null || pars.Length == 0) return msg;
+            return string.Format(msg, pars);
+        }
+
+        /// <summary>
+        /// 通过ID获取字符串，并进行字符串格式化，提供默认值
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="defaultValue">默认值</param>
+        /// <param name="pars">附带的参数</param>
+        /// <returns></returns>
+        public string GetRes(LangMsgKeys id, string defaultValue = null, params object[] pars)
+        {
+            var msg = GetByID((uint)id);
+            if (msg == null)
+            {
+                if (defaultValue == null)
+                    return id.ToString();
+                msg = defaultValue;
+            }
+            if (pars == null || pars.Length == 0) return msg;
+            return string.Format(msg, pars);
+        }
+
+        /// <summary>
+        /// 通过ID获取字符串，并进行字符串格式化，提供默认值
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue">默认值</param>
+        /// <param name="pars">附带的参数</param>
+        /// <returns></returns>
+        public string GetRes(string key, string defaultValue = null, params object[] pars)
+        {
+            var msg = GetByKey(key);
+            if (msg == null)
+            {
+                if (defaultValue == null)
+                    return key;
+                msg = defaultValue;
+            }
+            if (pars == null || pars.Length == 0) return msg;
+            return string.Format(msg, pars);
+        }
+
         #endregion
     }
 
