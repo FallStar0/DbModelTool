@@ -1,4 +1,4 @@
-﻿namespace FS.CodeTool
+﻿namespace FS.DbModelTool
 {
     partial class FormMain
     {
@@ -186,23 +186,23 @@
             // 
             // txtGenPath
             // 
-            this.txtGenPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FS.CodeTool.Properties.Settings.Default, "ModelGeneratePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtGenPath.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FS.DbModelTool.Properties.Settings.Default, "ModelGeneratePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtGenPath.Location = new System.Drawing.Point(131, 55);
             this.txtGenPath.Margin = new System.Windows.Forms.Padding(1);
             this.txtGenPath.Name = "txtGenPath";
             this.txtGenPath.Size = new System.Drawing.Size(280, 28);
             this.txtGenPath.TabIndex = 4;
-            this.txtGenPath.Text = global::FS.CodeTool.Properties.Settings.Default.ModelGeneratePath;
+            this.txtGenPath.Text = global::FS.DbModelTool.Properties.Settings.Default.ModelGeneratePath;
             // 
             // txtNameSpace
             // 
-            this.txtNameSpace.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FS.CodeTool.Properties.Settings.Default, "ModelNameSpace", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtNameSpace.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FS.DbModelTool.Properties.Settings.Default, "ModelNameSpace", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtNameSpace.Location = new System.Drawing.Point(131, 13);
             this.txtNameSpace.Margin = new System.Windows.Forms.Padding(1);
             this.txtNameSpace.Name = "txtNameSpace";
             this.txtNameSpace.Size = new System.Drawing.Size(280, 28);
             this.txtNameSpace.TabIndex = 5;
-            this.txtNameSpace.Text = global::FS.CodeTool.Properties.Settings.Default.ModelNameSpace;
+            this.txtNameSpace.Text = global::FS.DbModelTool.Properties.Settings.Default.ModelNameSpace;
             // 
             // lblTemplateName
             // 

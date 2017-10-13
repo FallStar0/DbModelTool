@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FS.CodeTool
+namespace FS.DbModelTool
 {
     /// <summary>
     /// 生成文件模型

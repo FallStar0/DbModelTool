@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FS.CodeTool
+namespace FS.DbModelTool
 {
     public partial class FormMain : Form
     {

@@ -35,11 +35,9 @@ namespace FS.DbExtractor
         /// <returns></returns>
         public List<DbTableInfo> GetAllTables()
         {
-            var sql = string.Format(@"
-                SELECT tbs.name as TABLE_NAME,ds.value as COMMENTS 
-                FROM sys.tables tbs
-                left join sys.extended_properties ds on ds.major_id=tbs.object_id 
-                Where ds.minor_id=0");
+            var sql = string.Format(@"SELECT tbs.name as TABLE_NAME,ds.value as COMMENTS FROM sys.tables tbs
+left join sys.extended_properties ds on ds.major_id=tbs.object_id and ds.minor_id=0
+order by TABLE_NAME asc");
             return GetAllTablesInternal(sql);
         }
         /// <summary>

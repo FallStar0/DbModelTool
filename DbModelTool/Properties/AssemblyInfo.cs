@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("从数据库读取表来生成模型")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Fallstar")]
-[assembly: AssemblyProduct("FS.CodeTool")]
+[assembly: AssemblyProduct("FS.DbModelTool")]
 [assembly: AssemblyCopyright("Copyright © fallstar@qq.com 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

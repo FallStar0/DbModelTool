@@ -50,7 +50,7 @@ namespace FS.DbExtractor
                 var info = new DbTableInfo()
                 {
                     TableName = dr["TABLE_NAME"].ToString(),
-                    Description = dr["COMMENTS"].ToString()
+                    Description = dr["COMMENTS"] == DBNull.Value ? null : dr["COMMENTS"].ToString()
                 };
                 if (info.Description != null)
                     info.Description = info.Description.Trim();

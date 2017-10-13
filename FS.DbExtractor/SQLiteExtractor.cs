@@ -61,6 +61,7 @@ namespace FS.DbExtractor
                 };
                 it.IsIdentity = dr["pk"].ToString() == "1";
                 it.DataType = ConvertDataType(it);
+                list.Add(it);
             }
             return list;
         }

@@ -4,7 +4,7 @@
 //  说明：用于包裹数据结果的实体
 //===================================================
 
-namespace FS.CodeTool
+namespace FS.DbModelTool
 {
     using System;
     /// <summary>

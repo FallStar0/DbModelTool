@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FS.DbExtractor", "FS.DbExtractor\FS.DbExtractor.csproj", "{B480209F-5CD4-4439-A2D8-16C26CC29DE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTool", "FS.CodeTool\CodeTool.csproj", "{B55DA906-F680-4C65-A7E6-3CED506CFEC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbModelTool", "DbModelTool\DbModelTool.csproj", "{B55DA906-F680-4C65-A7E6-3CED506CFEC1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FS.I18N", "FS.I18N\FS.I18N.csproj", "{9C90BF96-FAC3-4A95-9EEB-88D33A3F9E15}"
 EndProject

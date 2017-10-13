@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FS.DbExtractor;
 
-namespace FS.CodeTool
+namespace FS.DbModelTool
 {
     /// <summary>
     /// 抽取逻辑

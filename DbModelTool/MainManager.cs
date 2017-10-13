@@ -16,7 +16,7 @@ using System.Windows.Forms;
 using FS.I18N;
 using FS.TemplateEngine;
 
-namespace FS.CodeTool
+namespace FS.DbModelTool
 {
     /// <summary>
     /// 主要管理器
