@@ -130,7 +130,7 @@ namespace FS.DbExtractor
         /// <param name="sqlType"></param>
         /// <param name="isNullable">字段是否可空</param>
         /// <returns></returns>
-        public static string SqlType2CsharpTypeStr(string sqlType, bool isNullable = false, ushort precision = 0, byte scale = 0)
+        public static string SqlType2CsharpTypeStr(string sqlType, bool isNullable = false, ushort length = 0, byte scale = 0)
         {
             if (string.IsNullOrEmpty(sqlType))
                 throw new ArgumentNullException(nameof(sqlType));
@@ -141,27 +141,35 @@ namespace FS.DbExtractor
                 case "NUMBER":
                     if (scale == 0)
                     {
-                        if (precision == 0)
+                        if (length == 0)
                         {
                             //throw new ArgumentException(nameof(precision) + "不能为0（NUMBER）！");
                             val = "decimal";
                             break;
                         }
-              
-                        //boolean没法判断
 
-                        if (precision < 3)
+                        //boolean没法判断
+                        if (length == 1)
+                            val = "bool";
+                        else if (length < 3)
                             val = "sbyte";
-                        else if (precision < 5)
+                        else if (length < 5)
                             val = "short";
-                        else if (precision <= 9)
+                        else if (length <= 9)
                             val = "int";
-                        else
+                        else if (length <= 19)
                             val = "long";
+                        else
+                            val = "decimal";
                     }
                     else
                     {
-                        val = "decimal";
+                        if (length <= 7 && scale <= 3)
+                            val = "float";
+                        else if (length <= 15 && scale <= 5)
+                            val = "double";
+                        else
+                            val = "decimal";
                     }
                     break;
                 case "LONG":
