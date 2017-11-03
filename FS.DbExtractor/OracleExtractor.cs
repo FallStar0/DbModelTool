@@ -166,7 +166,7 @@ namespace FS.DbExtractor
                     {
                         if (length <= 7 && scale <= 3)
                             val = "float";
-                        else if (length <= 15 && scale <= 5)
+                        else if (length <= 13 && scale <= 7)
                             val = "double";
                         else
                             val = "decimal";
