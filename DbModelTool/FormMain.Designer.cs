@@ -30,35 +30,35 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tpDbNames = new System.Windows.Forms.TabPage();
-            this.lblDbNameTip = new System.Windows.Forms.Label();
-            this.cbLanguage = new System.Windows.Forms.ComboBox();
-            this.lbConStringName = new System.Windows.Forms.ListBox();
-            this.tpTables = new System.Windows.Forms.TabPage();
-            this.cbAllTables = new System.Windows.Forms.CheckBox();
-            this.cblbTables = new System.Windows.Forms.CheckedListBox();
             this.tpSettings = new System.Windows.Forms.TabPage();
+            this.btnSettingNext = new System.Windows.Forms.Button();
+            this.cbLanguage = new System.Windows.Forms.ComboBox();
             this.cbTemplateName = new System.Windows.Forms.ComboBox();
             this.txtGenPath = new System.Windows.Forms.TextBox();
             this.txtNameSpace = new System.Windows.Forms.TextBox();
             this.lblTemplateName = new System.Windows.Forms.Label();
             this.lblFilePath = new System.Windows.Forms.Label();
             this.lblNameSpace = new System.Windows.Forms.Label();
+            this.tpDbNames = new System.Windows.Forms.TabPage();
+            this.btnDbNext = new System.Windows.Forms.Button();
+            this.lblDbNameTip = new System.Windows.Forms.Label();
+            this.lbConStringName = new System.Windows.Forms.ListBox();
+            this.tpTables = new System.Windows.Forms.TabPage();
+            this.cblbTables = new System.Windows.Forms.CheckedListBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnTableNext = new System.Windows.Forms.Button();
+            this.cbAllTables = new System.Windows.Forms.CheckBox();
             this.tpResult = new System.Windows.Forms.TabPage();
             this.txtResultLog = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnGenFiles = new System.Windows.Forms.Button();
-            this.btnSettingNext = new System.Windows.Forms.Button();
-            this.btnDbNext = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnTableNext = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tpSettings.SuspendLayout();
             this.tpDbNames.SuspendLayout();
             this.tpTables.SuspendLayout();
-            this.tpSettings.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tpResult.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -73,90 +73,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(582, 447);
             this.tabControl1.TabIndex = 0;
-            // 
-            // tpDbNames
-            // 
-            this.tpDbNames.Controls.Add(this.btnDbNext);
-            this.tpDbNames.Controls.Add(this.lblDbNameTip);
-            this.tpDbNames.Controls.Add(this.lbConStringName);
-            this.tpDbNames.Location = new System.Drawing.Point(4, 29);
-            this.tpDbNames.Name = "tpDbNames";
-            this.tpDbNames.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDbNames.Size = new System.Drawing.Size(574, 414);
-            this.tpDbNames.TabIndex = 0;
-            this.tpDbNames.Text = "数据库";
-            this.tpDbNames.UseVisualStyleBackColor = true;
-            // 
-            // lblDbNameTip
-            // 
-            this.lblDbNameTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDbNameTip.Location = new System.Drawing.Point(439, 15);
-            this.lblDbNameTip.Name = "lblDbNameTip";
-            this.lblDbNameTip.Size = new System.Drawing.Size(121, 102);
-            this.lblDbNameTip.TabIndex = 5;
-            this.lblDbNameTip.Text = "双击选择数据库";
-            // 
-            // cbLanguage
-            // 
-            this.cbLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLanguage.FormattingEnabled = true;
-            this.cbLanguage.Location = new System.Drawing.Point(435, 13);
-            this.cbLanguage.Name = "cbLanguage";
-            this.cbLanguage.Size = new System.Drawing.Size(121, 28);
-            this.cbLanguage.TabIndex = 4;
-            // 
-            // lbConStringName
-            // 
-            this.lbConStringName.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbConStringName.Font = new System.Drawing.Font("Microsoft YaHei UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
-            this.lbConStringName.FormattingEnabled = true;
-            this.lbConStringName.ItemHeight = 25;
-            this.lbConStringName.Items.AddRange(new object[] {
-            "Oracle",
-            "SQLServer",
-            "MySql"});
-            this.lbConStringName.Location = new System.Drawing.Point(3, 3);
-            this.lbConStringName.Margin = new System.Windows.Forms.Padding(0);
-            this.lbConStringName.Name = "lbConStringName";
-            this.lbConStringName.Size = new System.Drawing.Size(408, 408);
-            this.lbConStringName.TabIndex = 3;
-            // 
-            // tpTables
-            // 
-            this.tpTables.Controls.Add(this.cblbTables);
-            this.tpTables.Controls.Add(this.panel2);
-            this.tpTables.Location = new System.Drawing.Point(4, 29);
-            this.tpTables.Name = "tpTables";
-            this.tpTables.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTables.Size = new System.Drawing.Size(574, 414);
-            this.tpTables.TabIndex = 1;
-            this.tpTables.Text = "表";
-            this.tpTables.UseVisualStyleBackColor = true;
-            // 
-            // cbAllTables
-            // 
-            this.cbAllTables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbAllTables.AutoSize = true;
-            this.cbAllTables.Location = new System.Drawing.Point(29, 13);
-            this.cbAllTables.Margin = new System.Windows.Forms.Padding(1);
-            this.cbAllTables.Name = "cbAllTables";
-            this.cbAllTables.Size = new System.Drawing.Size(60, 24);
-            this.cbAllTables.TabIndex = 3;
-            this.cbAllTables.Text = "全选";
-            this.cbAllTables.UseVisualStyleBackColor = true;
-            // 
-            // cblbTables
-            // 
-            this.cblbTables.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cblbTables.FormattingEnabled = true;
-            this.cblbTables.HorizontalScrollbar = true;
-            this.cblbTables.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.cblbTables.Location = new System.Drawing.Point(3, 3);
-            this.cblbTables.Margin = new System.Windows.Forms.Padding(0);
-            this.cblbTables.Name = "cblbTables";
-            this.cblbTables.Size = new System.Drawing.Size(448, 408);
-            this.cblbTables.TabIndex = 2;
             // 
             // tpSettings
             // 
@@ -174,6 +90,26 @@
             this.tpSettings.TabIndex = 2;
             this.tpSettings.Text = "选项";
             this.tpSettings.UseVisualStyleBackColor = true;
+            // 
+            // btnSettingNext
+            // 
+            this.btnSettingNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSettingNext.Location = new System.Drawing.Point(460, 362);
+            this.btnSettingNext.Name = "btnSettingNext";
+            this.btnSettingNext.Size = new System.Drawing.Size(100, 40);
+            this.btnSettingNext.TabIndex = 7;
+            this.btnSettingNext.Text = "下一步";
+            this.btnSettingNext.UseVisualStyleBackColor = true;
+            // 
+            // cbLanguage
+            // 
+            this.cbLanguage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLanguage.FormattingEnabled = true;
+            this.cbLanguage.Location = new System.Drawing.Point(435, 13);
+            this.cbLanguage.Name = "cbLanguage";
+            this.cbLanguage.Size = new System.Drawing.Size(121, 28);
+            this.cbLanguage.TabIndex = 4;
             // 
             // cbTemplateName
             // 
@@ -234,6 +170,110 @@
             this.lblNameSpace.TabIndex = 3;
             this.lblNameSpace.Text = "命名空间：";
             // 
+            // tpDbNames
+            // 
+            this.tpDbNames.Controls.Add(this.btnDbNext);
+            this.tpDbNames.Controls.Add(this.lblDbNameTip);
+            this.tpDbNames.Controls.Add(this.lbConStringName);
+            this.tpDbNames.Location = new System.Drawing.Point(4, 29);
+            this.tpDbNames.Name = "tpDbNames";
+            this.tpDbNames.Padding = new System.Windows.Forms.Padding(3);
+            this.tpDbNames.Size = new System.Drawing.Size(574, 414);
+            this.tpDbNames.TabIndex = 0;
+            this.tpDbNames.Text = "数据库";
+            this.tpDbNames.UseVisualStyleBackColor = true;
+            // 
+            // btnDbNext
+            // 
+            this.btnDbNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDbNext.Location = new System.Drawing.Point(460, 362);
+            this.btnDbNext.Name = "btnDbNext";
+            this.btnDbNext.Size = new System.Drawing.Size(100, 40);
+            this.btnDbNext.TabIndex = 8;
+            this.btnDbNext.Text = "下一步";
+            this.btnDbNext.UseVisualStyleBackColor = true;
+            // 
+            // lblDbNameTip
+            // 
+            this.lblDbNameTip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDbNameTip.Location = new System.Drawing.Point(439, 15);
+            this.lblDbNameTip.Name = "lblDbNameTip";
+            this.lblDbNameTip.Size = new System.Drawing.Size(121, 102);
+            this.lblDbNameTip.TabIndex = 5;
+            this.lblDbNameTip.Text = "双击选择数据库";
+            // 
+            // lbConStringName
+            // 
+            this.lbConStringName.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbConStringName.Font = new System.Drawing.Font("Microsoft YaHei UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.World);
+            this.lbConStringName.FormattingEnabled = true;
+            this.lbConStringName.ItemHeight = 25;
+            this.lbConStringName.Items.AddRange(new object[] {
+            "Oracle",
+            "SQLServer",
+            "MySql"});
+            this.lbConStringName.Location = new System.Drawing.Point(3, 3);
+            this.lbConStringName.Margin = new System.Windows.Forms.Padding(0);
+            this.lbConStringName.Name = "lbConStringName";
+            this.lbConStringName.Size = new System.Drawing.Size(408, 408);
+            this.lbConStringName.TabIndex = 3;
+            // 
+            // tpTables
+            // 
+            this.tpTables.Controls.Add(this.cblbTables);
+            this.tpTables.Controls.Add(this.panel2);
+            this.tpTables.Location = new System.Drawing.Point(4, 29);
+            this.tpTables.Name = "tpTables";
+            this.tpTables.Padding = new System.Windows.Forms.Padding(3);
+            this.tpTables.Size = new System.Drawing.Size(574, 414);
+            this.tpTables.TabIndex = 1;
+            this.tpTables.Text = "表";
+            this.tpTables.UseVisualStyleBackColor = true;
+            // 
+            // cblbTables
+            // 
+            this.cblbTables.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cblbTables.FormattingEnabled = true;
+            this.cblbTables.HorizontalScrollbar = true;
+            this.cblbTables.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.cblbTables.Location = new System.Drawing.Point(3, 3);
+            this.cblbTables.Margin = new System.Windows.Forms.Padding(0);
+            this.cblbTables.Name = "cblbTables";
+            this.cblbTables.Size = new System.Drawing.Size(448, 408);
+            this.cblbTables.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnTableNext);
+            this.panel2.Controls.Add(this.cbAllTables);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(451, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(120, 408);
+            this.panel2.TabIndex = 4;
+            // 
+            // btnTableNext
+            // 
+            this.btnTableNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTableNext.Location = new System.Drawing.Point(12, 361);
+            this.btnTableNext.Name = "btnTableNext";
+            this.btnTableNext.Size = new System.Drawing.Size(100, 40);
+            this.btnTableNext.TabIndex = 9;
+            this.btnTableNext.Text = "下一步";
+            this.btnTableNext.UseVisualStyleBackColor = true;
+            // 
+            // cbAllTables
+            // 
+            this.cbAllTables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbAllTables.AutoSize = true;
+            this.cbAllTables.Location = new System.Drawing.Point(29, 13);
+            this.cbAllTables.Margin = new System.Windows.Forms.Padding(1);
+            this.cbAllTables.Name = "cbAllTables";
+            this.cbAllTables.Size = new System.Drawing.Size(60, 24);
+            this.cbAllTables.TabIndex = 3;
+            this.cbAllTables.Text = "全选";
+            this.cbAllTables.UseVisualStyleBackColor = true;
+            // 
             // tpResult
             // 
             this.tpResult.Controls.Add(this.txtResultLog);
@@ -267,55 +307,15 @@
             // 
             // btnGenFiles
             // 
-            this.btnGenFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGenFiles.Font = new System.Drawing.Font("Microsoft YaHei UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.World);
-            this.btnGenFiles.Location = new System.Drawing.Point(17, 1);
+            this.btnGenFiles.Location = new System.Drawing.Point(17, 358);
             this.btnGenFiles.Margin = new System.Windows.Forms.Padding(1);
             this.btnGenFiles.Name = "btnGenFiles";
             this.btnGenFiles.Size = new System.Drawing.Size(97, 50);
             this.btnGenFiles.TabIndex = 3;
             this.btnGenFiles.Text = "生成";
             this.btnGenFiles.UseVisualStyleBackColor = true;
-            // 
-            // btnSettingNext
-            // 
-            this.btnSettingNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSettingNext.Location = new System.Drawing.Point(460, 362);
-            this.btnSettingNext.Name = "btnSettingNext";
-            this.btnSettingNext.Size = new System.Drawing.Size(100, 40);
-            this.btnSettingNext.TabIndex = 7;
-            this.btnSettingNext.Text = "下一步";
-            this.btnSettingNext.UseVisualStyleBackColor = true;
-            // 
-            // btnDbNext
-            // 
-            this.btnDbNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDbNext.Location = new System.Drawing.Point(460, 362);
-            this.btnDbNext.Name = "btnDbNext";
-            this.btnDbNext.Size = new System.Drawing.Size(100, 40);
-            this.btnDbNext.TabIndex = 8;
-            this.btnDbNext.Text = "下一步";
-            this.btnDbNext.UseVisualStyleBackColor = true;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnTableNext);
-            this.panel2.Controls.Add(this.cbAllTables);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(451, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(120, 408);
-            this.panel2.TabIndex = 4;
-            // 
-            // btnTableNext
-            // 
-            this.btnTableNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTableNext.Location = new System.Drawing.Point(15, 363);
-            this.btnTableNext.Name = "btnTableNext";
-            this.btnTableNext.Size = new System.Drawing.Size(100, 40);
-            this.btnTableNext.TabIndex = 9;
-            this.btnTableNext.Text = "下一步";
-            this.btnTableNext.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -330,15 +330,15 @@
             this.Name = "FormMain";
             this.Text = "模型构建工具";
             this.tabControl1.ResumeLayout(false);
-            this.tpDbNames.ResumeLayout(false);
-            this.tpTables.ResumeLayout(false);
             this.tpSettings.ResumeLayout(false);
             this.tpSettings.PerformLayout();
+            this.tpDbNames.ResumeLayout(false);
+            this.tpTables.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.tpResult.ResumeLayout(false);
             this.tpResult.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
