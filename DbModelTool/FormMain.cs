@@ -29,7 +29,7 @@ namespace FS.DbModelTool
         private void FormLoaded(object sender, EventArgs e)
         {
             cbAllTables.CheckedChanged += CbAllTables_CheckedChanged;
-            this.btnGenFiles.Click += (s, o) => BeginToGenFiles();
+            this.btnGenFiles.Click += async (s, o) => await BeginToGenFiles();
 
 
             InitUIMessage();
@@ -142,8 +142,9 @@ namespace FS.DbModelTool
                 MessageBox.Show(ret.ReplyMsg);
                 return;
             }
-
+            btnDbNext.Enabled = false;
             var result = await Task.Run(() => MainManager.GetTableNames(dbName));
+            btnDbNext.Enabled = true;
             if (!result.IsSuccess)
             {
                 MessageBox.Show(result.ReplyMsg);
@@ -177,7 +178,7 @@ namespace FS.DbModelTool
 
         #region Page-Result
 
-        private void BeginToGenFiles()
+        private async Task BeginToGenFiles()
         {
             var nameSpace = txtNameSpace.Text.Trim();
             var fileDir = txtGenPath.Text.Trim();
@@ -217,7 +218,9 @@ namespace FS.DbModelTool
                 Tables = selTables,
                 TemplateName = temp,
             };
-            Task.Run(() => MainManager.GenFiles(mo, AddResultLog));
+            btnGenFiles.Enabled = false;
+            await Task.Run(() => MainManager.GenFiles(mo, AddResultLog));
+            btnGenFiles.Enabled = true;
         }
 
         /// <summary>

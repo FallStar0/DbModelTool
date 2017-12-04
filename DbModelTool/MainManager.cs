@@ -123,8 +123,8 @@ namespace FS.DbModelTool
         {
             var sb = new StringBuilder();
             sb.AppendLine("using System;");
-            sb.AppendLine("using System.Collections.Generic;");
-            sb.AppendLine("using System.Linq;");
+            //sb.AppendLine("using System.Collections.Generic;");
+            //sb.AppendLine("using System.Linq;");
             sb.AppendLine("");
             sb.AppendLine("namespace " + nameSpace);
             sb.AppendLine("{");

@@ -265,11 +265,10 @@
             // cbAllTables
             // 
             this.cbAllTables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbAllTables.AutoSize = true;
-            this.cbAllTables.Location = new System.Drawing.Point(29, 13);
+            this.cbAllTables.Location = new System.Drawing.Point(12, 13);
             this.cbAllTables.Margin = new System.Windows.Forms.Padding(1);
             this.cbAllTables.Name = "cbAllTables";
-            this.cbAllTables.Size = new System.Drawing.Size(60, 24);
+            this.cbAllTables.Size = new System.Drawing.Size(105, 28);
             this.cbAllTables.TabIndex = 3;
             this.cbAllTables.Text = "全选";
             this.cbAllTables.UseVisualStyleBackColor = true;
@@ -335,7 +334,6 @@
             this.tpDbNames.ResumeLayout(false);
             this.tpTables.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.tpResult.ResumeLayout(false);
             this.tpResult.PerformLayout();
             this.panel1.ResumeLayout(false);
