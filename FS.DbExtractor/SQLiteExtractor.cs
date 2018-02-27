@@ -1,5 +1,5 @@
 ﻿//===================================================
-//  Copyright @  Thpower.com 2017
+//  Copyright @  fallstar0@qq.com 2017
 //  作者：Fallstar
 //  时间：2017-03-01 10:09:35
 //  说明：SQLite数据库信息抽取器

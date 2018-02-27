@@ -1,5 +1,5 @@
 ﻿//===================================================
-//  Copyright @  Thpower.com 2017
+//  Copyright @  fallstar0@qq.com 2017Thp.MonitorService
 //  作者：Fallstar
 //  时间：2017-02-28 16:46:10
 //  说明：数据库信息抽取器工厂

@@ -1,5 +1,5 @@
 ﻿//===================================================
-//  Copyright @  Thpower.com 2017
+//  Copyright @  fallstar0@qq.com 2017
 //  作者：Fallstar
 //  时间：2017-02-28 11:46:33
 //  说明：MSSQL Server 的信息访问类。
