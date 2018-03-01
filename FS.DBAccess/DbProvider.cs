@@ -85,7 +85,7 @@ namespace FS.DBAccess
             //创建连接字符串
             ConString = CreateConnectionString(address, port, dbName, userName, password);
             if (string.IsNullOrEmpty(ConString))
-                throw new Exception(LangHelper.GetByID(153));
+                throw new Exception(LangHelper.GetRes(1603));
             //创建连接对象
             DbConn = CreateConnection(ConString);
         }

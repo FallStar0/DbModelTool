@@ -32,7 +32,7 @@ namespace FS.DbModelTool
             this.btnGenFiles.Click += async (s, o) => await BeginToGenFiles();
 
 
-            InitUIMessage();
+            //InitUIMessage();
             InitSettings();
 
 
@@ -42,17 +42,40 @@ namespace FS.DbModelTool
             btnSettingNext.Click += (s, o) => tabControl1.SelectedIndex = 1;
             btnDbNext.Click += (s, o) => tabControl1.SelectedIndex = 2;
             btnTableNext.Click += (s, o) => tabControl1.SelectedIndex = 3;
+
+            btnDbReload.Click += async (s, o) =>
+             {
+                 btnDbReload.Enabled = false;
+                 await ReloadTables(currentDbName);
+                 btnDbReload.Enabled = true;
+             };
         }
         #endregion
 
         #region Page-Config
-        private void InitSettings()
+        private List<LanguageSimpleInfo> langs = null;
+        private async void InitSettings()
         {
+            langs = await Task.Run(() => LangHelper.GetAllSupportLanguages());
             cbLanguage.Items.Clear();
-            cbLanguage.Items.Add("中文");
-            cbLanguage.Items.Add("English");
-            cbLanguage.SelectedIndex = 0;
+            cbLanguage.DataSource = langs;
+            cbLanguage.DisplayMember = "Name";
+
             cbLanguage.SelectedIndexChanged += CbLanguage_SelectedIndexChanged;
+            var clang = langs.FirstOrDefault(x => x.Code == LangHelper.CurrentLanguage.Code);
+            if (clang != null)
+            {
+                cbLanguage.SelectedIndex = langs.IndexOf(clang);
+            }
+            else
+            {
+                if (langs.Exists(x => x.Name == "English"))
+                {
+                    cbLanguage.SelectedIndex = langs.IndexOf(langs.Find(x => x.Name == "English"));
+                }
+                else
+                    cbLanguage.SelectedIndex = 0;
+            }
 
             var selTemp = Properties.Settings.Default.ModelTemlpateName;
             cbTemplateName.Items.Clear();
@@ -75,42 +98,105 @@ namespace FS.DbModelTool
 
 
         #region UI-Language
-        /// <summary>
-        /// 初始化UI信息
-        /// </summary>
-        private void InitUIMessage()
-        {
-            this.Text = LangHelper.GetByID(205);
-            tpDbNames.Text = LangHelper.GetByID(206);
-            this.tpTables.Text = LangHelper.GetByID(208);
-            this.tpSettings.Text = LangHelper.GetByID(LangMsgKeys.Option);
-            this.tpResult.Text = LangHelper.GetByID(LangMsgKeys.Result);
-
-            lblDbNameTip.Text = LangHelper.GetByID(207);
-
-            this.cbAllTables.Text = LangHelper.GetByID(LangMsgKeys.SelectAll);
-
-            this.lblFilePath.Text = LangHelper.GetByID(209);
-
-            this.lblNameSpace.Text = LangHelper.GetByID(210);
-            this.lblTemplateName.Text = LangHelper.GetByID(211);
-
-            this.btnGenFiles.Text = LangHelper.GetByID(LangMsgKeys.Generate);
-            btnSettingNext.Text = LangHelper.GetByID(LangMsgKeys.Next);
-            btnDbNext.Text = LangHelper.GetByID(LangMsgKeys.Next);
-            btnTableNext.Text = LangHelper.GetByID(LangMsgKeys.Next);
-        }
-
         private void CbLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
             var cb = sender as ComboBox;
-            var lang = cb.SelectedItem.ToString();
-            string langCode = "zh-CN";
-            if (lang == "English")
-                langCode = "en-us";
+            var lang = cb.SelectedItem as LanguageSimpleInfo;
+            if (lang == null) return;
+            string langCode = lang.Code;
             LangHelper.LoadLanguage(langCode);
+            LangHelper.SetUICulture(langCode);
+            ChangeLanguage();
+        }
 
-            InitUIMessage();
+        /// <summary>
+        /// 切换语言
+        /// </summary>
+        private void ChangeLanguage()
+        {
+            var msg = string.Empty;
+            foreach (Control ctrl in GetSelfAndChildrenRecursive(this))
+            {
+                if (ctrl.Tag == null) continue;
+                msg = GetResByTag(ctrl.Tag);
+                if (string.IsNullOrEmpty(msg)) continue;
+                ctrl.Text = msg;
+            }
+            this.Text += " v" + this.ProductVersion;
+        }
+        /// <summary>
+        /// 递归获得所有子控件
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <returns></returns>
+        private IEnumerable<Control> GetSelfAndChildrenRecursive(Control parent)
+        {
+            List<Control> controls = new List<Control>();
+            foreach (Control child in parent.Controls)
+            {
+                controls.AddRange(GetSelfAndChildrenRecursive(child));
+            }
+            controls.Add(parent);
+            return controls;
+        }
+        /// <summary>
+        /// 通过分析Tag来判断获取资源
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        private string GetResByTag(object tag)
+        {
+            var t = tag.ToString().Trim();
+            if (string.IsNullOrEmpty(t)) return null;
+            if (t.StartsWith("ResID:"))
+            {
+                t = t.Replace("ResID:", string.Empty);
+                if (uint.TryParse(t, out uint id))
+                    return GetRes(id);
+                return null;
+            }
+            if (t.StartsWith("ResKey:"))
+            {
+                t = t.Replace("ResKey:", string.Empty);
+                return GetRes(t);
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 获取资源
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="defaultValue"></param>
+        /// <param name="pars"></param>
+        /// <returns></returns>
+        private string GetRes(uint id, string defaultValue = null, params object[] pars)
+        {
+            return LangHelper.GetRes(id, defaultValue, pars);
+        }
+
+        /// <summary>
+        /// 获取资源
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="defaultValue"></param>
+        /// <param name="pars"></param>
+        /// <returns></returns>
+        private string GetRes(LangMsgKeys id, string defaultValue = null, params object[] pars)
+        {
+            return LangHelper.GetRes(id, defaultValue, pars);
+        }
+
+        /// <summary>
+        /// 获取资源
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <param name="pars"></param>
+        /// <returns></returns>
+        private string GetRes(string key, string defaultValue = null, params object[] pars)
+        {
+            return LangHelper.GetRes(key, defaultValue, pars);
         }
         #endregion
 
@@ -142,6 +228,35 @@ namespace FS.DbModelTool
                 MessageBox.Show(ret.ReplyMsg);
                 return;
             }
+            await ReloadTables(dbName);
+
+            tabControl1.SelectedIndex = 2;
+        }
+        #endregion
+
+        #region Page-Table
+        private List<DbTableInfo> tableInfos = null;
+
+        private void CbAllTables_CheckedChanged(object sender, EventArgs e)
+        {
+            var isCheck = cbAllTables.Checked;
+            for (int i = 0; i < cblbTables.Items.Count; i++)
+            {
+                cblbTables.SetItemChecked(i, isCheck);
+            }
+        }
+
+        /// <summary>
+        /// 读取所有表的信息
+        /// </summary>
+        /// <param name="dbName"></param>
+        private async Task ReloadTables(string dbName)
+        {
+            if (string.IsNullOrEmpty(dbName))
+            {
+                MessageBox.Show(GetRes(1514));
+                return;
+            }
             btnDbNext.Enabled = false;
             var result = await Task.Run(() => MainManager.GetTableNames(dbName));
             btnDbNext.Enabled = true;
@@ -158,20 +273,6 @@ namespace FS.DbModelTool
             foreach (var item in result.Result)
             {
                 cblbTables.Items.Add(item.TableName);
-            }
-            tabControl1.SelectedIndex = 2;
-        }
-        #endregion
-
-        #region Page-Table
-        private List<DbTableInfo> tableInfos = null;
-
-        private void CbAllTables_CheckedChanged(object sender, EventArgs e)
-        {
-            var isCheck = cbAllTables.Checked;
-            for (int i = 0; i < cblbTables.Items.Count; i++)
-            {
-                cblbTables.SetItemChecked(i, isCheck);
             }
         }
         #endregion
@@ -196,10 +297,10 @@ namespace FS.DbModelTool
             Properties.Settings.Default.Save();
 
             txtResultLog.Clear();
-            AddResultLog(LangHelper.GetByID(202));
+            AddResultLog(LangHelper.GetRes(1502));
             if (tableInfos == null)
             {
-                AddResultLog(LangHelper.GetByID(203));
+                AddResultLog(LangHelper.GetRes(1503));
                 return;
             }
             var selTables = new List<DbTableInfo>();
@@ -210,7 +311,7 @@ namespace FS.DbModelTool
                 if (it == null) continue;
                 selTables.Add(it);
             }
-            AddResultLog(LangHelper.GetByID(204) + selTables.Count);
+            AddResultLog(LangHelper.GetRes(1504, "Tables need to proccess :") + selTables.Count);
             var mo = new GenFileModel()
             {
                 FilePath = fileDir,

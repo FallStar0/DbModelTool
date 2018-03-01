@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Language Code="en-us" Name="English">
+  <String LocID="10" Key="OptOK">Operation Done</String>
+  <String LocID="11" Key="OptFailed">Operation Failed</String>
+  <String LocID="100">Parameter can not be null</String>
+  <String LocID="101">Parameters are not enough</String>
+  <String LocID="102">Parameter incorrect</String>
+  <String LocID="103">Parameter array size can not less than zero</String>
+  <String LocID="120" Key="OK">OK</String>
+  <String LocID="121" Key="Apply">Apply</String>
+  <String LocID="122" Key="Finish">Finish</String>
+  <String LocID="123">Cancel</String>
+  <String LocID="124">Result</String>
+  <String LocID="125" Key="Option">Option</String>
+  <String LocID="126">SelectAll</String>
+  <String LocID="127">Generate</String>
+  <String LocID="128">Create</String>
+  <String LocID="129">Next</String>
+  <String LocID="130">Previous</String>
+  <String LocID="131">Save</String>
+  <String LocID="132">Test</String>
+  <String LocID="133">Load</String>
+  <String LocID="134">Reload</String>
+  <String LocID="135">Read</String>
+  <String LocID="151">OK</String>
+  <String LocID="152">Success</String>
+  <String LocID="153">Failed</String>
+  <String LocID="154">Available</String>
+  <String LocID="155">NotAvailable</String>
+  <String LocID="156">Normal</String>
+  <String LocID="157">Not Exist</String>
+
+  <String LocID="1500">[{0}/{1}]Generated : {2}.cs</String>
+  <String LocID="1501">All files had been generated~</String>
+  <String LocID="1502">Begin to generate code file~</String>
+  <String LocID="1503">Table has no info</String>
+  <String LocID="1504">Tables need to proccess :</String>
+  <String LocID="1505">DbModelTool</String>
+  <String LocID="1506">Database</String>
+  <String LocID="1507">Double click to select</String>
+  <String LocID="1508">Tables</String>
+  <String LocID="1509">File Path :</String>
+  <String LocID="1510">Namespace :</String>
+  <String LocID="1511">Template :</String>
+  <String LocID="1512">Author :</String>
+  <String LocID="1513">Copyright :</String>
+  <String LocID="1514">Please select the database you want !</String>
+  <String LocID="1515">You can edit database connections by modify Db.config file in the same directory.</String>
+
+  <String LocID="1600" Key="DbConStringNotSuport">Can not find connection string with name of {0} !</String>
+  <String LocID="1601" Key="DbTypeNotSuport">Database type not supported !</String>
+  <String LocID="1602">Database type not supported : {0}</String>
+  <String LocID="1603">Create database connection string failed</String>
+  <String LocID="1620">Database connection string must contains ';' !</String>
+  <String LocID="1621">Database connection string {0} has no [ProviderName] !</String>
+  <String LocID="1622" Key="DbTypeNotSuportEx">Database type not supported : {0}</String>
+  <String LocID="1623">Database field type {0} is not support to convert to system type.</String>
+</Language>

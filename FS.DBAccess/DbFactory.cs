@@ -58,7 +58,7 @@ namespace FS.DBAccess
                 throw new ArgumentNullException(nameof(connectionName));
             var cfg = ConfigurationManager.ConnectionStrings[connectionName];
             if (cfg == null)
-                throw new ArgumentException(LangHelper.GetByID(150, connectionName));
+                throw new ArgumentException(LangHelper.GetRes(1600, "Can not find connection string with name of {0} !", connectionName));
 
             return Create(cfg.ProviderName, cfg.ConnectionString);
         }
@@ -75,7 +75,7 @@ namespace FS.DBAccess
             {
                 var factory = GetFactory(config.DBType);
                 if (factory == null)
-                    throw new NotImplementedException(LangHelper.GetByID(151));
+                    throw new NotImplementedException(LangHelper.GetRes(1601));
                 DbProvider provider = null;
 
                 switch (config.DBType)
@@ -85,7 +85,7 @@ namespace FS.DBAccess
                         break;
 
                     default:
-                        throw new NotImplementedException(LangHelper.GetByID(151));
+                        throw new NotImplementedException(LangHelper.GetRes(1601));
                 }
                 //provider.ProviderFactory = factory;
                 return provider;
@@ -112,7 +112,7 @@ namespace FS.DBAccess
             {
                 var factory = GetFactory(providerName);
                 if (factory == null)
-                    throw new NotImplementedException(LangHelper.GetByID(151));
+                    throw new NotImplementedException(LangHelper.GetRes(1601));
                 var provider = new DbProviderImpl(factory, connectionString);
                 return provider;
             }
@@ -145,7 +145,7 @@ namespace FS.DBAccess
                 Password = password,
             };
             if (cfg.IsEmpty)
-                throw new ArgumentException(LangHelper.GetByID(101));
+                throw new ArgumentException(LangHelper.GetRes(101));
             return Create(cfg);
         }
 

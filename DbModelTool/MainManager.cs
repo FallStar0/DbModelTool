@@ -23,10 +23,14 @@ namespace FS.DbModelTool
     /// </summary>
     internal class MainManager
     {
+        #region vars
         /// <summary>
         /// 抽取逻辑类
         /// </summary>
         public static ExtactLogic Logic = new ExtactLogic();
+        #endregion
+
+        #region business
         /// <summary>
         /// 获取数据库连接名称
         /// </summary>
@@ -98,13 +102,15 @@ namespace FS.DbModelTool
                             NameSpace = model.NameSpace,
                             Table = table
                         };
+                        TemplateExtraData.Author = Properties.Settings.Default.Author;
+                        TemplateExtraData.Copyright = Properties.Settings.Default.Copyright;
                         content = TempHelper.GenCode(model.TemplateName, m);
                     }
 
                     File.WriteAllText(Path.Combine(model.FilePath, table.TableName + ".cs"), content, Encoding.UTF8);
-                    logAction(LangHelper.GetByID(200, index, allcount, table.TableName));
+                    logAction(LangHelper.GetRes(1500, "[{0}/{1}]Generated : {2}.cs", index, allcount, table.TableName));
                 }
-                logAction(LangHelper.GetByID(201));
+                logAction(LangHelper.GetRes(1501));
             }
             catch (Exception ex)
             {
@@ -144,5 +150,7 @@ namespace FS.DbModelTool
             sb.AppendLine("}");
             return sb.ToString();
         }
+        #endregion
+
     }
 }

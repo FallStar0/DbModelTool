@@ -52,9 +52,19 @@ namespace FS.I18N
                 throw new ArgumentNullException(nameof(filePath));
             StoreHelper.SaveToFile(m, filePath);
         }
+
+        /// <summary>
+        /// 设置UI Culture
+        /// </summary>
+        /// <param name="culture"></param>
+        public static void SetUICulture(string culture)
+        {
+            if (string.IsNullOrEmpty(culture)) return;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture);
+        }
         #endregion
 
-        #region 获取
+        #region 获取资源
         /// <summary>
         /// 获取语言模型
         /// </summary>
@@ -89,6 +99,7 @@ namespace FS.I18N
             if (pars == null || pars.Length == 0) return msg;
             return string.Format(msg, pars);
         }
+
         /// <summary>
         /// 通过ID获取字符串，并进行字符串格式化
         /// </summary>
@@ -174,5 +185,15 @@ namespace FS.I18N
         }
         #endregion
 
+        #region 获取支持语言
+        /// <summary>
+        /// Get all support language info
+        /// </summary>
+        /// <returns></returns>
+        public static List<LanguageSimpleInfo> GetAllSupportLanguages()
+        {
+            return StoreHelper.GetAllSupportLanguages();
+        }
+        #endregion
     }
 }

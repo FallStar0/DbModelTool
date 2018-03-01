@@ -185,4 +185,22 @@ namespace FS.I18N
         public string Value { get; set; }
     }
 
+    /// <summary>
+    /// Simply language info
+    /// </summary>
+    public class LanguageSimpleInfo
+    {
+        /// <summary>
+        /// language name
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// code
+        /// </summary>
+        public string Code { get; set; }
+        /// <summary>
+        /// filename
+        /// </summary>
+        public string FileName { get; set; }
+    }
 }

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Language Code="zh-CN" Name="简体中文">
+  <String LocID="10" Key="OptOK">操作成功</String>
+  <String LocID="11" Key="OptFailed">操作失败</String>
+  <String LocID="100">参数不能为空</String>
+  <String LocID="101">参数不完整</String>
+  <String LocID="102">参数不正确</String>
+  <String LocID="103">参数数组大小不能为空</String>
+  <String LocID="120" Key="OK">确定</String>
+  <String LocID="121" Key="Apply">应用</String>
+  <String LocID="122" Key="Finish">完成</String>
+  <String LocID="123">取消</String>
+  <String LocID="124">结果</String>
+  <String LocID="125" Key="Option">选项</String>
+  <String LocID="126">全选</String>
+  <String LocID="127">生成</String>
+  <String LocID="128">创建</String>
+  <String LocID="129">下一步</String>
+  <String LocID="130">上一步</String>
+  <String LocID="131">保存</String>
+  <String LocID="132">测试</String>
+  <String LocID="133">加载</String>
+  <String LocID="134">重载</String>
+  <String LocID="135">读取</String>
+  <String LocID="151">正常</String>
+  <String LocID="152">成功</String>
+  <String LocID="153">失败</String>
+  <String LocID="154">可用</String>
+  <String LocID="155">不可用</String>
+  <String LocID="156">正常</String>
+  <String LocID="157">不存在</String>
+
+  <String LocID="1500">[{0}/{1}]生成文件：{2}.cs</String>
+  <String LocID="1501">已经生成所有文件~</String>
+  <String LocID="1502">开始生成模型文件~</String>
+  <String LocID="1503">没有对应的表信息</String>
+  <String LocID="1504">需要处理的表数量：</String>
+  <String LocID="1505">模型构建工具</String>
+  <String LocID="1506">数据库</String>
+  <String LocID="1507">双击选择数据库</String>
+  <String LocID="1508">表</String>
+  <String LocID="1509">生成路径：</String>
+  <String LocID="1510">命名空间：</String>
+  <String LocID="1511">模板名称：</String>
+  <String LocID="1512">作者：</String>
+  <String LocID="1513">版权：</String>
+  <String LocID="1514">请先选择数据库！</String>
+  <String LocID="1515">你可以在当前目录的Db.config文件更改数据库连接。</String>
+  
+  
+  <String LocID="1600" Key="DbConStringNotSuport">未能找到名为 {0} 的连接字符串！</String>
+  <String LocID="1601" Key="DbTypeNotSuport">暂未支持该类型数据库！</String>
+  <String LocID="1602">暂未支持数据库类型：{0}</String>
+  <String LocID="1603">创建数据连接字符串失败</String>
+  <String LocID="1620">连接字符串必须包含分号(;)！</String>
+  <String LocID="1621">连接字符串 {0} 未设置ProviderName！</String>
+  <String LocID="1622" Key="DbTypeNotSuportEx">暂未支持数据库类型：{0}</String>
+  <String LocID="1623">未实现数据库字段类型 {0} 的转换。</String>
+</Language>

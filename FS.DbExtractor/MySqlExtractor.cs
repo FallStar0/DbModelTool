@@ -172,7 +172,7 @@ namespace FS.DbExtractor
                     break;
 
                 default:
-                    throw new Exception(I18N.LangHelper.GetByID(183, sqlType));
+                    throw new Exception(I18N.LangHelper.GetRes(1623, "Database field type {0} is not support to convert to system type.", sqlType));
             }
             if (isNullable && !allowNull)
                 return val + "?";

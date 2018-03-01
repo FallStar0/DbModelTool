@@ -11,5 +11,11 @@
     <Setting Name="ModelTemlpateName" Type="System.String" Scope="User">
       <Value Profile="(Default)">default</Value>
     </Setting>
+    <Setting Name="Author" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Fallstar</Value>
+    </Setting>
+    <Setting Name="Copyright" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fallstar0@qq.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

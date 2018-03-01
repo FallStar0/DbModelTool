@@ -114,7 +114,7 @@ namespace FS.DbExtractor
             if (string.IsNullOrEmpty(connString))
                 connString = ConnectionString;
             if (!connString.Contains(";"))
-                throw new ArgumentException(LangHelper.GetByID(180));
+                throw new ArgumentException(LangHelper.GetRes(1620, "Database connection string must contains ';' !"));
             var sp1 = connString.Split(';');
             foreach (var item in sp1)
             {

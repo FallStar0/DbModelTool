@@ -31,7 +31,7 @@ namespace FS.DbExtractor
             var proName = cfg.ProviderName;
             if (string.IsNullOrEmpty(proName))
             {
-                throw new InvalidOperationException(LangHelper.GetByID(181, dbConnectionName));
+                throw new InvalidOperationException(LangHelper.GetRes(1621, "Database connection string {0} has no [ProviderName] !", dbConnectionName));
             }
             DBType dbType = DBType.Oracle;
             if (proName.Contains("Oracle.ManagedDataAccess"))
@@ -70,7 +70,7 @@ namespace FS.DbExtractor
                     return new MssqlExtractor();
 
                 default:
-                    throw new ArgumentException(LangHelper.GetByID(182, type));
+                    throw new ArgumentException(LangHelper.GetRes(1622, "Database type not supported : {0}", type));
             }
 
         }
