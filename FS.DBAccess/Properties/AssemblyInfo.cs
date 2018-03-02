@@ -8,10 +8,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("数据访问模块")]
 [assembly: AssemblyDescription("数据访问模块")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Fallstar")]
+[assembly: AssemblyCompany(FS.VerConstants.CompanyName)]
 [assembly: AssemblyProduct("FS.DBAccess")]
-[assembly: AssemblyCopyright("Copyright © fallstar@qq.com 2017")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright(FS.VerConstants.Copyright)]
+[assembly: AssemblyTrademark(FS.VerConstants.Trademark)]
 [assembly: AssemblyCulture("")]
 
 //将 ComVisible 设置为 false 将使此程序集中的类型
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion(FS.VerConstants.AssemblyVersion)]
+[assembly: AssemblyFileVersion(FS.VerConstants.FileVersion)]

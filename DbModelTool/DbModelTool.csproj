@@ -29,7 +29,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\DbModelTool\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -93,7 +93,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Content Include="Db.config">
+    <Content Include="Db.default.config">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -132,6 +132,10 @@
     <ProjectReference Include="..\FS.TemplateEngine\FS.TemplateEngine.csproj">
       <Project>{b061cf8f-eec9-4f60-b6e0-96c5319b65d4}</Project>
       <Name>FS.TemplateEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FS.Ver\FS.Ver.csproj">
+      <Project>{aa971fa9-c577-484a-add1-3932be0d677a}</Project>
+      <Name>FS.Ver</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

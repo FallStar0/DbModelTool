@@ -65,6 +65,10 @@
       <Project>{9c90bf96-fac3-4a95-9eeb-88d33a3f9e15}</Project>
       <Name>FS.I18N</Name>
     </ProjectReference>
+    <ProjectReference Include="..\FS.Ver\FS.Ver.csproj">
+      <Project>{aa971fa9-c577-484a-add1-3932be0d677a}</Project>
+      <Name>FS.Ver</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
