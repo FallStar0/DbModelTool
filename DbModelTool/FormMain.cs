@@ -153,7 +153,8 @@ namespace FS.DbModelTool
             if (t.StartsWith("ResID:"))
             {
                 t = t.Replace("ResID:", string.Empty);
-                if (uint.TryParse(t, out uint id))
+                uint id = 0;
+                if (uint.TryParse(t, out id))
                     return GetRes(id);
                 return null;
             }
