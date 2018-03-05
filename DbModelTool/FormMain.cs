@@ -124,7 +124,7 @@ namespace FS.DbModelTool
                 if (string.IsNullOrEmpty(msg)) continue;
                 ctrl.Text = msg;
             }
-            this.Text += " v" + this.ProductVersion;
+            this.Text += "by Fallstar v" + this.ProductVersion;
         }
         /// <summary>
         /// 递归获得所有子控件
