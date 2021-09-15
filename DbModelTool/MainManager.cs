@@ -104,7 +104,7 @@ namespace FS.DbModelTool
                         };
                         TemplateExtraData.Author = Properties.Settings.Default.Author;
                         TemplateExtraData.Copyright = Properties.Settings.Default.Copyright;
-                        content = TempHelper.GenCode(model.TemplateName, m);
+                        content = TempHelper.GenCode2(model.TemplateName, m);
                     }
 
                     File.WriteAllText(Path.Combine(model.FilePath, table.TableName + ".cs"), content, Encoding.UTF8);

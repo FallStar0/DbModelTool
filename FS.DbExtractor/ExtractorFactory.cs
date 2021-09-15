@@ -1,17 +1,14 @@
 ﻿//===================================================
-//  Copyright @  fallstar0@qq.com 2017Thp.MonitorService
+//  Copyright @  fallstar0@qq.com 2017
 //  作者：Fallstar
 //  时间：2017-02-28 16:46:10
 //  说明：数据库信息抽取器工厂
 //===================================================
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FS.DBAccess;
-using System.Configuration;
 using FS.I18N;
+using System;
+using System.Configuration;
+using System.Linq;
 
 namespace FS.DbExtractor
 {

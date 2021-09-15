@@ -9,8 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RazorEngine;
-using RazorEngine.Templating;
+//using RazorEngine;
+//using RazorEngine.Templating;
+using RazorEngineCore;
 using System.IO;
 
 namespace FS.TemplateEngine
@@ -58,7 +59,31 @@ namespace FS.TemplateEngine
             }
             var n = Path.GetFileName(tempFile);
             var t = File.ReadAllText(tempFile);
-            var result = Engine.Razor.RunCompile(t, n, model.GetType(), model);
+            //var result = Engine.Razor.RunCompile(t, n, model.GetType(), model);
+            //return result;
+            return null;
+        }
+
+        /// <summary>
+        /// 生成代码字符串
+        /// </summary>
+        /// <param name="tempFile"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public static string GenCode2(string tempFile, object model)
+        {
+            if (string.IsNullOrEmpty(tempFile)) throw new ArgumentNullException(nameof(tempFile));
+            if (model == null) throw new ArgumentNullException(nameof(model));
+            if (!tempFile.Contains("/"))
+            {
+                tempFile = Path.Combine(TemplateFolder, tempFile);
+            }
+            var n = Path.GetFileName(tempFile);
+            var t = File.ReadAllText(tempFile);
+
+            var razorEngine = new RazorEngine();
+            var template = razorEngine.Compile(t);
+            var result = template.Run(model);
             return result;
         }
 
@@ -66,12 +91,14 @@ namespace FS.TemplateEngine
         {
             var n = Path.GetFileName(tempFile);
             var t = File.ReadAllText(tempFile);
-            var result = Engine.Razor.RunCompile(t, n, model.GetType(), model);
+            //var result = Engine.Razor.RunCompile(t, n, model.GetType(), model);
+            //Console.Write(result);
+
             //if (!string.IsNullOrEmpty(result))
             //{
             //    result = result.Replace("&lt;", "<").Replace("&gt;", ">");
             //}
-            Console.Write(result);
+
             //string template = "Hello @Model.Name, welcome to RazorEngine!";
             //string templateFile = "C:/mytemplate.cshtml";
             //var result = Engine.IsolatedRazor.RunCompile(new LoadedTemplateSource(template, templateFile), "templateKey", null, new { Name = "World" });
