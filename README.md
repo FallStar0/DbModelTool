@@ -1,4 +1,4 @@
-# DbModelTool
+﻿# DbModelTool
 Author : Fallstar (fallstar0@qq.com)   
 Home : [https://gitee.com/fallstar/ModelTool]('https://gitee.com/fallstar/ModelTool')
 
@@ -20,14 +20,14 @@ So I create this tool ~o(∩_∩)o ~
 
 Develop Environment : **VS2019** **.NET 4.7.2**   
 
-**:arrow_down:[Download]('https://gitee.com/fallstar/ModelTool/releases')**
+**:arrow_down:[Download](https://gitee.com/fallstar/ModelTool/releases)**
 
 
 ## Feature
 
 - 1.Database Support : Oracle , SQLServer , SQLite ,MySql   
 
-- 2.Internal Support, : Chinese and English built-in. Copy and modify the xml file in folder **Language** and restart the tool then you can see it!   
+- 2.Multi Language Support, : Chinese and English built-in. Copy and modify the xml file in folder **Language** and restart the tool then you can see it!   
 
 - 3.Use Razor engine to generate files, template file is **cshtml**. Isn't familary?! That is the same as  ASP.NET MVC! You can just copy and modify the cshtml file in **Templates** folder then you can use it!! 
 
