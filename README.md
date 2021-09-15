@@ -18,7 +18,7 @@ Moreover , EF is not easy to add field commit on model.
 
 So I create this tool ~o(∩_∩)o ~   
 
-Develop Environment : **VS2017** **.NET 4.5.2**   
+Develop Environment : **VS2019** **.NET 4.7.2**   
 
 **:arrow_down:[Download]('https://gitee.com/fallstar/ModelTool/releases')**
 

@@ -9,7 +9,7 @@
 
 于是这个工具就这么诞生了 o(∩_∩)o ~   
 
-开发环境：**VS2017** **.NET 4.5.2**   
+开发环境：**VS2019** **.NET 4.7.2**   
 
 **:arrow_down:[点我下载]('https://gitee.com/fallstar/ModelTool/releases')**
 

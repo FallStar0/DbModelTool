@@ -40,7 +40,9 @@ namespace FS.Test
                 Description = "Test3 desc",
                 IsNullable = false,
             });
-            TempHelper.GenFile(t, m);
+            var res = TempHelper.GenCode2(t, m);
+            Assert.IsNotNull(res);
+            Console.WriteLine(res);
         }
     }
 }

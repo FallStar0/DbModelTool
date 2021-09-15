@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 //using RazorEngine.Templating;
 using RazorEngineCore;
 using System.IO;
+using FS.DBAccess;
 
 namespace FS.TemplateEngine
 {
@@ -49,6 +50,7 @@ namespace FS.TemplateEngine
         /// <param name="tempFile"></param>
         /// <param name="model"></param>
         /// <returns></returns>
+        [Obsolete]
         public static string GenCode(string tempFile, object model)
         {
             if (string.IsNullOrEmpty(tempFile)) throw new ArgumentNullException(nameof(tempFile));
@@ -82,27 +84,18 @@ namespace FS.TemplateEngine
             var t = File.ReadAllText(tempFile);
 
             var razorEngine = new RazorEngine();
-            var template = razorEngine.Compile(t);
+            var template = razorEngine.Compile(t, builder =>
+            {
+                //builder.AddAssemblyReferenceByName("System.Security"); // by name
+                builder.AddAssemblyReference(typeof(File)); // by type
+                builder.AddAssemblyReference(typeof(DateTime));
+                builder.AddAssemblyReference(typeof(DbTool).Assembly);
+                builder.AddAssemblyReference(typeof(TempHelper).Assembly);
+            });
             var result = template.Run(model);
             return result;
         }
 
-        public static void GenFile(string tempFile, object model)
-        {
-            var n = Path.GetFileName(tempFile);
-            var t = File.ReadAllText(tempFile);
-            //var result = Engine.Razor.RunCompile(t, n, model.GetType(), model);
-            //Console.Write(result);
-
-            //if (!string.IsNullOrEmpty(result))
-            //{
-            //    result = result.Replace("&lt;", "<").Replace("&gt;", ">");
-            //}
-
-            //string template = "Hello @Model.Name, welcome to RazorEngine!";
-            //string templateFile = "C:/mytemplate.cshtml";
-            //var result = Engine.IsolatedRazor.RunCompile(new LoadedTemplateSource(template, templateFile), "templateKey", null, new { Name = "World" });
-        }
         #endregion
     }
 }
